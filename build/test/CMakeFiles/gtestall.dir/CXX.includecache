@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pc/wws/SingHttpServer/src/Buffer/Buffer.h
+vector
+-
+string
+-
+algorithm
+-
+assert.h
+-
+string.h
+-
+sys/types.h
+-
+
+/home/pc/wws/SingHttpServer/test/Buffer_test.cpp
+gtest/gtest.h
+-
+string
+-
+../src/Buffer/Buffer.h
+/home/pc/wws/SingHttpServer/src/Buffer/Buffer.h
+
+/home/pc/wws/SingHttpServer/test/GTestAll.cpp
+gtest/gtest.h
+/home/pc/wws/SingHttpServer/test/gtest/gtest.h
+iostream
+-
+

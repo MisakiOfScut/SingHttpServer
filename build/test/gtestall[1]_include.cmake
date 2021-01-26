@@ -1,0 +1,5 @@
+if(EXISTS "/home/pc/wws/SingHttpServer/build/test/gtestall[1]_tests.cmake")
+  include("/home/pc/wws/SingHttpServer/build/test/gtestall[1]_tests.cmake")
+else()
+  add_test(gtestall_NOT_BUILT gtestall_NOT_BUILT)
+endif()

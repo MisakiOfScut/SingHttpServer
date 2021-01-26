@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/pc/wws/SingHttpServer/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o -c /home/pc/wws/SingHttpServer/src/Buffer/Buffer.cpp",
+  "file": "/home/pc/wws/SingHttpServer/src/Buffer/Buffer.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/main.dir/main.cpp.o -c /home/pc/wws/SingHttpServer/main.cpp",
+  "file": "/home/pc/wws/SingHttpServer/main.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build/test",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/gtestall.dir/Buffer_test.cpp.o -c /home/pc/wws/SingHttpServer/test/Buffer_test.cpp",
+  "file": "/home/pc/wws/SingHttpServer/test/Buffer_test.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build/test",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/gtestall.dir/GTestAll.cpp.o -c /home/pc/wws/SingHttpServer/test/GTestAll.cpp",
+  "file": "/home/pc/wws/SingHttpServer/test/GTestAll.cpp"
+}
+]

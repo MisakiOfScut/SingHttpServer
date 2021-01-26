@@ -1,0 +1,12 @@
+/home/pc/wws/SingHttpServer/build/CMakeFiles/rebuild_cache.dir
+/home/pc/wws/SingHttpServer/build/CMakeFiles/test.dir
+/home/pc/wws/SingHttpServer/build/CMakeFiles/edit_cache.dir
+/home/pc/wws/SingHttpServer/build/CMakeFiles/main.dir
+/home/pc/wws/SingHttpServer/build/CMakeFiles/package_source.dir
+/home/pc/wws/SingHttpServer/build/CMakeFiles/package.dir
+/home/pc/wws/SingHttpServer/build/test/CMakeFiles/edit_cache.dir
+/home/pc/wws/SingHttpServer/build/test/CMakeFiles/test.dir
+/home/pc/wws/SingHttpServer/build/test/CMakeFiles/rebuild_cache.dir
+/home/pc/wws/SingHttpServer/build/test/CMakeFiles/gtestall.dir
+/home/pc/wws/SingHttpServer/build/test/CMakeFiles/package_source.dir
+/home/pc/wws/SingHttpServer/build/test/CMakeFiles/package.dir
