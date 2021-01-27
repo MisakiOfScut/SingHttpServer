@@ -1,0 +1,7 @@
+{
+    "cmake.configureOnOpen": false,
+    "files.associations": {
+        "condition_variable": "cpp",
+        "mutex": "cpp"
+    }
+}
