@@ -2,7 +2,7 @@
 #include <assert.h>
 using namespace sing;
 
-ThreadPool::ThreadPool(size_t thread_num)
+ThreadPool::ThreadPool(int thread_num)
     :pool_(std::make_shared<poolData>())
 {
     assert(thread_num>0);
@@ -14,7 +14,7 @@ ThreadPool::ThreadPool(size_t thread_num)
             {
                 if (!pool->tasksQueue.empty())//判断是否有工作，避免假唤醒
                 {
-                    auto task = pool->tasksQueue.front();
+                    auto task = std::move(pool->tasksQueue.front());//使用move调用移动构造函数赋值，避免一次copy
                     pool->tasksQueue.pop();
                     lock.unlock();//释放锁使得其他线程进入临界区
                     task();//执行工作
@@ -60,13 +60,4 @@ ThreadPool::~ThreadPool(){//pool_对象是线程池的成员，池析构时会�
         pool_->running = false;
     }
     pool_->cond.notify_all();
-}
-
-template<class F>
-void ThreadPool::pushTask(F&& task){
-    {
-        std::lock_guard<std::mutex> lock(pool_->mutex);
-        pool_->tasksQueue.emplace(std::forward<F> task);
-    }
-    pool_->cond.notify_one();;
 }

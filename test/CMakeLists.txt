@@ -4,7 +4,7 @@ find_package(GTest REQUIRED)
 include(GoogleTest)
 #include_directories(${GTEST_INCLUDE_DIRS})
 
-add_executable(gtestall Buffer_test.cpp GTestAll.cpp)
+add_executable(gtestall ../src/Buffer/Buffer.cpp Buffer_test.cpp Threadpool_test.cpp GTestAll.cpp)
 
 # 链接测试库
 target_link_libraries( gtestall ${GTEST_BOTH_LIBRARIES} pthread )
