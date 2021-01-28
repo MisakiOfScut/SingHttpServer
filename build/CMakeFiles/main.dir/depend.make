@@ -3,6 +3,3 @@
 
 CMakeFiles/main.dir/main.cpp.o: ../main.cpp
 
-CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o: ../src/Buffer/Buffer.cpp
-CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o: ../src/Buffer/Buffer.h
-

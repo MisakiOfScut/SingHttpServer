@@ -212,6 +212,60 @@ GTestAll.cpp.s:
 	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/GTestAll.cpp.s
 .PHONY : GTestAll.cpp.s
 
+Threadpool_test.o: Threadpool_test.cpp.o
+
+.PHONY : Threadpool_test.o
+
+# target to build an object file
+Threadpool_test.cpp.o:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/Threadpool_test.cpp.o
+.PHONY : Threadpool_test.cpp.o
+
+Threadpool_test.i: Threadpool_test.cpp.i
+
+.PHONY : Threadpool_test.i
+
+# target to preprocess a source file
+Threadpool_test.cpp.i:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/Threadpool_test.cpp.i
+.PHONY : Threadpool_test.cpp.i
+
+Threadpool_test.s: Threadpool_test.cpp.s
+
+.PHONY : Threadpool_test.s
+
+# target to generate assembly for a file
+Threadpool_test.cpp.s:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/Threadpool_test.cpp.s
+.PHONY : Threadpool_test.cpp.s
+
+__/src/Buffer/Buffer.o: __/src/Buffer/Buffer.cpp.o
+
+.PHONY : __/src/Buffer/Buffer.o
+
+# target to build an object file
+__/src/Buffer/Buffer.cpp.o:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/__/src/Buffer/Buffer.cpp.o
+.PHONY : __/src/Buffer/Buffer.cpp.o
+
+__/src/Buffer/Buffer.i: __/src/Buffer/Buffer.cpp.i
+
+.PHONY : __/src/Buffer/Buffer.i
+
+# target to preprocess a source file
+__/src/Buffer/Buffer.cpp.i:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/__/src/Buffer/Buffer.cpp.i
+.PHONY : __/src/Buffer/Buffer.cpp.i
+
+__/src/Buffer/Buffer.s: __/src/Buffer/Buffer.cpp.s
+
+.PHONY : __/src/Buffer/Buffer.s
+
+# target to generate assembly for a file
+__/src/Buffer/Buffer.cpp.s:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/__/src/Buffer/Buffer.cpp.s
+.PHONY : __/src/Buffer/Buffer.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -230,6 +284,12 @@ help:
 	@echo "... GTestAll.o"
 	@echo "... GTestAll.i"
 	@echo "... GTestAll.s"
+	@echo "... Threadpool_test.o"
+	@echo "... Threadpool_test.i"
+	@echo "... Threadpool_test.s"
+	@echo "... __/src/Buffer/Buffer.o"
+	@echo "... __/src/Buffer/Buffer.i"
+	@echo "... __/src/Buffer/Buffer.s"
 .PHONY : help
 
 

@@ -1,1 +1,1 @@
-/usr/bin/x86_64-linux-gnu-g++-7  -g  -rdynamic CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o CMakeFiles/main.dir/main.cpp.o  -o main 
+/usr/bin/x86_64-linux-gnu-g++-7  -g  -rdynamic CMakeFiles/main.dir/main.cpp.o  -o main 

@@ -6,6 +6,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pc/wws/SingHttpServer/test/Buffer_test.cpp" "/home/pc/wws/SingHttpServer/build/test/CMakeFiles/gtestall.dir/Buffer_test.cpp.o"
   "/home/pc/wws/SingHttpServer/test/GTestAll.cpp" "/home/pc/wws/SingHttpServer/build/test/CMakeFiles/gtestall.dir/GTestAll.cpp.o"
+  "/home/pc/wws/SingHttpServer/test/Threadpool_test.cpp" "/home/pc/wws/SingHttpServer/build/test/CMakeFiles/gtestall.dir/Threadpool_test.cpp.o"
+  "/home/pc/wws/SingHttpServer/src/Buffer/Buffer.cpp" "/home/pc/wws/SingHttpServer/build/test/CMakeFiles/gtestall.dir/__/src/Buffer/Buffer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

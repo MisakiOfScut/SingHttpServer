@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/gtestall.dir/__/src/Buffer/Buffer.cpp.o"
   "CMakeFiles/gtestall.dir/Buffer_test.cpp.o"
+  "CMakeFiles/gtestall.dir/Threadpool_test.cpp.o"
   "CMakeFiles/gtestall.dir/GTestAll.cpp.o"
   "gtestall.pdb"
   "gtestall"

@@ -5,7 +5,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pc/wws/SingHttpServer/main.cpp" "/home/pc/wws/SingHttpServer/build/CMakeFiles/main.dir/main.cpp.o"
-  "/home/pc/wws/SingHttpServer/src/Buffer/Buffer.cpp" "/home/pc/wws/SingHttpServer/build/CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

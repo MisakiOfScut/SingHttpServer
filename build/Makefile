@@ -196,33 +196,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-src/Buffer/Buffer.o: src/Buffer/Buffer.cpp.o
-
-.PHONY : src/Buffer/Buffer.o
-
-# target to build an object file
-src/Buffer/Buffer.cpp.o:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o
-.PHONY : src/Buffer/Buffer.cpp.o
-
-src/Buffer/Buffer.i: src/Buffer/Buffer.cpp.i
-
-.PHONY : src/Buffer/Buffer.i
-
-# target to preprocess a source file
-src/Buffer/Buffer.cpp.i:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Buffer/Buffer.cpp.i
-.PHONY : src/Buffer/Buffer.cpp.i
-
-src/Buffer/Buffer.s: src/Buffer/Buffer.cpp.s
-
-.PHONY : src/Buffer/Buffer.s
-
-# target to generate assembly for a file
-src/Buffer/Buffer.cpp.s:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Buffer/Buffer.cpp.s
-.PHONY : src/Buffer/Buffer.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -239,9 +212,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... src/Buffer/Buffer.o"
-	@echo "... src/Buffer/Buffer.i"
-	@echo "... src/Buffer/Buffer.s"
 .PHONY : help
 
 
