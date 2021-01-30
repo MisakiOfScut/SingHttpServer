@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pc/wws/SingHttpServer/src/Timer/Timer.h
+functional
+-
+chrono
+-
+iostream
+-
+
+/home/pc/wws/SingHttpServer/src/Timer/TimerManager.cpp
+TimerManager.h
+/home/pc/wws/SingHttpServer/src/Timer/TimerManager.h
+
+/home/pc/wws/SingHttpServer/src/Timer/TimerManager.h
+Timer.h
+/home/pc/wws/SingHttpServer/src/Timer/Timer.h
+queue
+-
+unordered_map
+-
+assert.h
+-
+
+/home/pc/wws/SingHttpServer/test/GTestAll.cpp
+gtest/gtest.h
+/home/pc/wws/SingHttpServer/test/gtest/gtest.h
+iostream
+-
+
+/home/pc/wws/SingHttpServer/test/Timer_test.cpp
+../src/Timer/TimerManager.h
+/home/pc/wws/SingHttpServer/src/Timer/TimerManager.h
+gtest/gtest.h
+-
+iostream
+-
+

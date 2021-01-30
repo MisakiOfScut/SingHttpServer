@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pc/wws/SingHttpServer/src/ThreadPool/ThreadPool.h
+mutex
+-
+queue
+-
+condition_variable
+-
+functional
+-
+thread
+-
+assert.h
+-
+
+/home/pc/wws/SingHttpServer/test/GTestAll.cpp
+gtest/gtest.h
+/home/pc/wws/SingHttpServer/test/gtest/gtest.h
+iostream
+-
+
+/home/pc/wws/SingHttpServer/test/Threadpool_test.cpp
+../src/ThreadPool/ThreadPool.h
+/home/pc/wws/SingHttpServer/src/ThreadPool/ThreadPool.h
+gtest/gtest.h
+-
+

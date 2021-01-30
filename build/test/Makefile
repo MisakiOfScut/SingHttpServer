@@ -89,17 +89,6 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target package_source
-package_source:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /home/pc/wws/SingHttpServer/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/pc/wws/SingHttpServer/build/CPackSourceConfig.cmake
-.PHONY : package_source
-
-# Special rule for the target package_source
-package_source/fast: package_source
-
-.PHONY : package_source/fast
-
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
@@ -110,6 +99,17 @@ package: preinstall
 package/fast: package
 
 .PHONY : package/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	cd /home/pc/wws/SingHttpServer/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/pc/wws/SingHttpServer/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+
+.PHONY : package_source/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -144,19 +144,64 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-test/CMakeFiles/gtestall.dir/rule:
-	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/gtestall.dir/rule
-.PHONY : test/CMakeFiles/gtestall.dir/rule
+test/CMakeFiles/Threadpool_test.dir/rule:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/Threadpool_test.dir/rule
+.PHONY : test/CMakeFiles/Threadpool_test.dir/rule
 
 # Convenience name for target.
-gtestall: test/CMakeFiles/gtestall.dir/rule
+Threadpool_test: test/CMakeFiles/Threadpool_test.dir/rule
 
-.PHONY : gtestall
+.PHONY : Threadpool_test
 
 # fast build rule for target.
-gtestall/fast:
-	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/build
-.PHONY : gtestall/fast
+Threadpool_test/fast:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Threadpool_test.dir/build.make test/CMakeFiles/Threadpool_test.dir/build
+.PHONY : Threadpool_test/fast
+
+# Convenience name for target.
+test/CMakeFiles/Buffer_test.dir/rule:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/Buffer_test.dir/rule
+.PHONY : test/CMakeFiles/Buffer_test.dir/rule
+
+# Convenience name for target.
+Buffer_test: test/CMakeFiles/Buffer_test.dir/rule
+
+.PHONY : Buffer_test
+
+# fast build rule for target.
+Buffer_test/fast:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Buffer_test.dir/build.make test/CMakeFiles/Buffer_test.dir/build
+.PHONY : Buffer_test/fast
+
+# Convenience name for target.
+test/CMakeFiles/Timer_test.dir/rule:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/Timer_test.dir/rule
+.PHONY : test/CMakeFiles/Timer_test.dir/rule
+
+# Convenience name for target.
+Timer_test: test/CMakeFiles/Timer_test.dir/rule
+
+.PHONY : Timer_test
+
+# fast build rule for target.
+Timer_test/fast:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Timer_test.dir/build.make test/CMakeFiles/Timer_test.dir/build
+.PHONY : Timer_test/fast
+
+# Convenience name for target.
+test/CMakeFiles/HttpRequest_test.dir/rule:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/HttpRequest_test.dir/rule
+.PHONY : test/CMakeFiles/HttpRequest_test.dir/rule
+
+# Convenience name for target.
+HttpRequest_test: test/CMakeFiles/HttpRequest_test.dir/rule
+
+.PHONY : HttpRequest_test
+
+# fast build rule for target.
+HttpRequest_test/fast:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/HttpRequest_test.dir/build.make test/CMakeFiles/HttpRequest_test.dir/build
+.PHONY : HttpRequest_test/fast
 
 Buffer_test.o: Buffer_test.cpp.o
 
@@ -164,7 +209,7 @@ Buffer_test.o: Buffer_test.cpp.o
 
 # target to build an object file
 Buffer_test.cpp.o:
-	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/Buffer_test.cpp.o
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Buffer_test.dir/build.make test/CMakeFiles/Buffer_test.dir/Buffer_test.cpp.o
 .PHONY : Buffer_test.cpp.o
 
 Buffer_test.i: Buffer_test.cpp.i
@@ -173,7 +218,7 @@ Buffer_test.i: Buffer_test.cpp.i
 
 # target to preprocess a source file
 Buffer_test.cpp.i:
-	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/Buffer_test.cpp.i
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Buffer_test.dir/build.make test/CMakeFiles/Buffer_test.dir/Buffer_test.cpp.i
 .PHONY : Buffer_test.cpp.i
 
 Buffer_test.s: Buffer_test.cpp.s
@@ -182,7 +227,7 @@ Buffer_test.s: Buffer_test.cpp.s
 
 # target to generate assembly for a file
 Buffer_test.cpp.s:
-	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/Buffer_test.cpp.s
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Buffer_test.dir/build.make test/CMakeFiles/Buffer_test.dir/Buffer_test.cpp.s
 .PHONY : Buffer_test.cpp.s
 
 GTestAll.o: GTestAll.cpp.o
@@ -191,7 +236,10 @@ GTestAll.o: GTestAll.cpp.o
 
 # target to build an object file
 GTestAll.cpp.o:
-	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/GTestAll.cpp.o
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Threadpool_test.dir/build.make test/CMakeFiles/Threadpool_test.dir/GTestAll.cpp.o
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Buffer_test.dir/build.make test/CMakeFiles/Buffer_test.dir/GTestAll.cpp.o
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Timer_test.dir/build.make test/CMakeFiles/Timer_test.dir/GTestAll.cpp.o
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/HttpRequest_test.dir/build.make test/CMakeFiles/HttpRequest_test.dir/GTestAll.cpp.o
 .PHONY : GTestAll.cpp.o
 
 GTestAll.i: GTestAll.cpp.i
@@ -200,7 +248,10 @@ GTestAll.i: GTestAll.cpp.i
 
 # target to preprocess a source file
 GTestAll.cpp.i:
-	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/GTestAll.cpp.i
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Threadpool_test.dir/build.make test/CMakeFiles/Threadpool_test.dir/GTestAll.cpp.i
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Buffer_test.dir/build.make test/CMakeFiles/Buffer_test.dir/GTestAll.cpp.i
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Timer_test.dir/build.make test/CMakeFiles/Timer_test.dir/GTestAll.cpp.i
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/HttpRequest_test.dir/build.make test/CMakeFiles/HttpRequest_test.dir/GTestAll.cpp.i
 .PHONY : GTestAll.cpp.i
 
 GTestAll.s: GTestAll.cpp.s
@@ -209,8 +260,38 @@ GTestAll.s: GTestAll.cpp.s
 
 # target to generate assembly for a file
 GTestAll.cpp.s:
-	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/GTestAll.cpp.s
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Threadpool_test.dir/build.make test/CMakeFiles/Threadpool_test.dir/GTestAll.cpp.s
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Buffer_test.dir/build.make test/CMakeFiles/Buffer_test.dir/GTestAll.cpp.s
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Timer_test.dir/build.make test/CMakeFiles/Timer_test.dir/GTestAll.cpp.s
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/HttpRequest_test.dir/build.make test/CMakeFiles/HttpRequest_test.dir/GTestAll.cpp.s
 .PHONY : GTestAll.cpp.s
+
+HttpRequest_test.o: HttpRequest_test.cpp.o
+
+.PHONY : HttpRequest_test.o
+
+# target to build an object file
+HttpRequest_test.cpp.o:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/HttpRequest_test.dir/build.make test/CMakeFiles/HttpRequest_test.dir/HttpRequest_test.cpp.o
+.PHONY : HttpRequest_test.cpp.o
+
+HttpRequest_test.i: HttpRequest_test.cpp.i
+
+.PHONY : HttpRequest_test.i
+
+# target to preprocess a source file
+HttpRequest_test.cpp.i:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/HttpRequest_test.dir/build.make test/CMakeFiles/HttpRequest_test.dir/HttpRequest_test.cpp.i
+.PHONY : HttpRequest_test.cpp.i
+
+HttpRequest_test.s: HttpRequest_test.cpp.s
+
+.PHONY : HttpRequest_test.s
+
+# target to generate assembly for a file
+HttpRequest_test.cpp.s:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/HttpRequest_test.dir/build.make test/CMakeFiles/HttpRequest_test.dir/HttpRequest_test.cpp.s
+.PHONY : HttpRequest_test.cpp.s
 
 Threadpool_test.o: Threadpool_test.cpp.o
 
@@ -218,7 +299,7 @@ Threadpool_test.o: Threadpool_test.cpp.o
 
 # target to build an object file
 Threadpool_test.cpp.o:
-	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/Threadpool_test.cpp.o
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Threadpool_test.dir/build.make test/CMakeFiles/Threadpool_test.dir/Threadpool_test.cpp.o
 .PHONY : Threadpool_test.cpp.o
 
 Threadpool_test.i: Threadpool_test.cpp.i
@@ -227,7 +308,7 @@ Threadpool_test.i: Threadpool_test.cpp.i
 
 # target to preprocess a source file
 Threadpool_test.cpp.i:
-	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/Threadpool_test.cpp.i
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Threadpool_test.dir/build.make test/CMakeFiles/Threadpool_test.dir/Threadpool_test.cpp.i
 .PHONY : Threadpool_test.cpp.i
 
 Threadpool_test.s: Threadpool_test.cpp.s
@@ -236,8 +317,35 @@ Threadpool_test.s: Threadpool_test.cpp.s
 
 # target to generate assembly for a file
 Threadpool_test.cpp.s:
-	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/Threadpool_test.cpp.s
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Threadpool_test.dir/build.make test/CMakeFiles/Threadpool_test.dir/Threadpool_test.cpp.s
 .PHONY : Threadpool_test.cpp.s
+
+Timer_test.o: Timer_test.cpp.o
+
+.PHONY : Timer_test.o
+
+# target to build an object file
+Timer_test.cpp.o:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Timer_test.dir/build.make test/CMakeFiles/Timer_test.dir/Timer_test.cpp.o
+.PHONY : Timer_test.cpp.o
+
+Timer_test.i: Timer_test.cpp.i
+
+.PHONY : Timer_test.i
+
+# target to preprocess a source file
+Timer_test.cpp.i:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Timer_test.dir/build.make test/CMakeFiles/Timer_test.dir/Timer_test.cpp.i
+.PHONY : Timer_test.cpp.i
+
+Timer_test.s: Timer_test.cpp.s
+
+.PHONY : Timer_test.s
+
+# target to generate assembly for a file
+Timer_test.cpp.s:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Timer_test.dir/build.make test/CMakeFiles/Timer_test.dir/Timer_test.cpp.s
+.PHONY : Timer_test.cpp.s
 
 __/src/Buffer/Buffer.o: __/src/Buffer/Buffer.cpp.o
 
@@ -245,7 +353,8 @@ __/src/Buffer/Buffer.o: __/src/Buffer/Buffer.cpp.o
 
 # target to build an object file
 __/src/Buffer/Buffer.cpp.o:
-	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/__/src/Buffer/Buffer.cpp.o
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Buffer_test.dir/build.make test/CMakeFiles/Buffer_test.dir/__/src/Buffer/Buffer.cpp.o
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/HttpRequest_test.dir/build.make test/CMakeFiles/HttpRequest_test.dir/__/src/Buffer/Buffer.cpp.o
 .PHONY : __/src/Buffer/Buffer.cpp.o
 
 __/src/Buffer/Buffer.i: __/src/Buffer/Buffer.cpp.i
@@ -254,7 +363,8 @@ __/src/Buffer/Buffer.i: __/src/Buffer/Buffer.cpp.i
 
 # target to preprocess a source file
 __/src/Buffer/Buffer.cpp.i:
-	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/__/src/Buffer/Buffer.cpp.i
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Buffer_test.dir/build.make test/CMakeFiles/Buffer_test.dir/__/src/Buffer/Buffer.cpp.i
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/HttpRequest_test.dir/build.make test/CMakeFiles/HttpRequest_test.dir/__/src/Buffer/Buffer.cpp.i
 .PHONY : __/src/Buffer/Buffer.cpp.i
 
 __/src/Buffer/Buffer.s: __/src/Buffer/Buffer.cpp.s
@@ -263,8 +373,63 @@ __/src/Buffer/Buffer.s: __/src/Buffer/Buffer.cpp.s
 
 # target to generate assembly for a file
 __/src/Buffer/Buffer.cpp.s:
-	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/__/src/Buffer/Buffer.cpp.s
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Buffer_test.dir/build.make test/CMakeFiles/Buffer_test.dir/__/src/Buffer/Buffer.cpp.s
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/HttpRequest_test.dir/build.make test/CMakeFiles/HttpRequest_test.dir/__/src/Buffer/Buffer.cpp.s
 .PHONY : __/src/Buffer/Buffer.cpp.s
+
+__/src/Http/HttpContext.o: __/src/Http/HttpContext.cpp.o
+
+.PHONY : __/src/Http/HttpContext.o
+
+# target to build an object file
+__/src/Http/HttpContext.cpp.o:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/HttpRequest_test.dir/build.make test/CMakeFiles/HttpRequest_test.dir/__/src/Http/HttpContext.cpp.o
+.PHONY : __/src/Http/HttpContext.cpp.o
+
+__/src/Http/HttpContext.i: __/src/Http/HttpContext.cpp.i
+
+.PHONY : __/src/Http/HttpContext.i
+
+# target to preprocess a source file
+__/src/Http/HttpContext.cpp.i:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/HttpRequest_test.dir/build.make test/CMakeFiles/HttpRequest_test.dir/__/src/Http/HttpContext.cpp.i
+.PHONY : __/src/Http/HttpContext.cpp.i
+
+__/src/Http/HttpContext.s: __/src/Http/HttpContext.cpp.s
+
+.PHONY : __/src/Http/HttpContext.s
+
+# target to generate assembly for a file
+__/src/Http/HttpContext.cpp.s:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/HttpRequest_test.dir/build.make test/CMakeFiles/HttpRequest_test.dir/__/src/Http/HttpContext.cpp.s
+.PHONY : __/src/Http/HttpContext.cpp.s
+
+__/src/Timer/TimerManager.o: __/src/Timer/TimerManager.cpp.o
+
+.PHONY : __/src/Timer/TimerManager.o
+
+# target to build an object file
+__/src/Timer/TimerManager.cpp.o:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Timer_test.dir/build.make test/CMakeFiles/Timer_test.dir/__/src/Timer/TimerManager.cpp.o
+.PHONY : __/src/Timer/TimerManager.cpp.o
+
+__/src/Timer/TimerManager.i: __/src/Timer/TimerManager.cpp.i
+
+.PHONY : __/src/Timer/TimerManager.i
+
+# target to preprocess a source file
+__/src/Timer/TimerManager.cpp.i:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Timer_test.dir/build.make test/CMakeFiles/Timer_test.dir/__/src/Timer/TimerManager.cpp.i
+.PHONY : __/src/Timer/TimerManager.cpp.i
+
+__/src/Timer/TimerManager.s: __/src/Timer/TimerManager.cpp.s
+
+.PHONY : __/src/Timer/TimerManager.s
+
+# target to generate assembly for a file
+__/src/Timer/TimerManager.cpp.s:
+	cd /home/pc/wws/SingHttpServer/build && $(MAKE) -f test/CMakeFiles/Timer_test.dir/build.make test/CMakeFiles/Timer_test.dir/__/src/Timer/TimerManager.cpp.s
+.PHONY : __/src/Timer/TimerManager.cpp.s
 
 # Help Target
 help:
@@ -274,22 +439,37 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... test"
+	@echo "... Threadpool_test"
+	@echo "... Buffer_test"
 	@echo "... rebuild_cache"
-	@echo "... gtestall"
-	@echo "... package_source"
+	@echo "... Timer_test"
+	@echo "... HttpRequest_test"
 	@echo "... package"
+	@echo "... package_source"
 	@echo "... Buffer_test.o"
 	@echo "... Buffer_test.i"
 	@echo "... Buffer_test.s"
 	@echo "... GTestAll.o"
 	@echo "... GTestAll.i"
 	@echo "... GTestAll.s"
+	@echo "... HttpRequest_test.o"
+	@echo "... HttpRequest_test.i"
+	@echo "... HttpRequest_test.s"
 	@echo "... Threadpool_test.o"
 	@echo "... Threadpool_test.i"
 	@echo "... Threadpool_test.s"
+	@echo "... Timer_test.o"
+	@echo "... Timer_test.i"
+	@echo "... Timer_test.s"
 	@echo "... __/src/Buffer/Buffer.o"
 	@echo "... __/src/Buffer/Buffer.i"
 	@echo "... __/src/Buffer/Buffer.s"
+	@echo "... __/src/Http/HttpContext.o"
+	@echo "... __/src/Http/HttpContext.i"
+	@echo "... __/src/Http/HttpContext.s"
+	@echo "... __/src/Timer/TimerManager.o"
+	@echo "... __/src/Timer/TimerManager.i"
+	@echo "... __/src/Timer/TimerManager.s"
 .PHONY : help
 
 
