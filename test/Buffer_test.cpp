@@ -68,6 +68,14 @@ TEST(testBufferFindEOL,buffer_test)
     ASSERT_EQ(buf.findLF(buf.peek()+90000), null);
 }
 
+TEST(buffer_testtest,BufferFindCRLF){
+    Buffer input;
+    input.append("GET /index.html HTTP/1.1\r\n"
+       "Host: www.chenshuo.com\r\n"
+       "\r\n");
+    ASSERT_EQ(input.findCRLF(),input.peek()+24);
+}
+
 // void output(Buffer&& buf, const void* inner)
 // {
 //   Buffer newbuf(std::move(buf));

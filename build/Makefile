@@ -157,17 +157,56 @@ main/fast:
 .PHONY : main/fast
 
 #=============================================================================
-# Target rules for targets named gtestall
+# Target rules for targets named Threadpool_test
 
 # Build rule for target.
-gtestall: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gtestall
-.PHONY : gtestall
+Threadpool_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Threadpool_test
+.PHONY : Threadpool_test
 
 # fast build rule for target.
-gtestall/fast:
-	$(MAKE) -f test/CMakeFiles/gtestall.dir/build.make test/CMakeFiles/gtestall.dir/build
-.PHONY : gtestall/fast
+Threadpool_test/fast:
+	$(MAKE) -f test/CMakeFiles/Threadpool_test.dir/build.make test/CMakeFiles/Threadpool_test.dir/build
+.PHONY : Threadpool_test/fast
+
+#=============================================================================
+# Target rules for targets named Buffer_test
+
+# Build rule for target.
+Buffer_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Buffer_test
+.PHONY : Buffer_test
+
+# fast build rule for target.
+Buffer_test/fast:
+	$(MAKE) -f test/CMakeFiles/Buffer_test.dir/build.make test/CMakeFiles/Buffer_test.dir/build
+.PHONY : Buffer_test/fast
+
+#=============================================================================
+# Target rules for targets named Timer_test
+
+# Build rule for target.
+Timer_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Timer_test
+.PHONY : Timer_test
+
+# fast build rule for target.
+Timer_test/fast:
+	$(MAKE) -f test/CMakeFiles/Timer_test.dir/build.make test/CMakeFiles/Timer_test.dir/build
+.PHONY : Timer_test/fast
+
+#=============================================================================
+# Target rules for targets named HttpRequest_test
+
+# Build rule for target.
+HttpRequest_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 HttpRequest_test
+.PHONY : HttpRequest_test
+
+# fast build rule for target.
+HttpRequest_test/fast:
+	$(MAKE) -f test/CMakeFiles/HttpRequest_test.dir/build.make test/CMakeFiles/HttpRequest_test.dir/build
+.PHONY : HttpRequest_test/fast
 
 main.o: main.cpp.o
 
@@ -208,7 +247,10 @@ help:
 	@echo "... main"
 	@echo "... package_source"
 	@echo "... package"
-	@echo "... gtestall"
+	@echo "... Threadpool_test"
+	@echo "... Buffer_test"
+	@echo "... Timer_test"
+	@echo "... HttpRequest_test"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
