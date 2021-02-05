@@ -14,17 +14,17 @@ TEST(Response_test, test_makeErrResp){
     string s("GET /index.html HTTP/1.1\r\n"
                 "Host: www.wws.com\r\n"
                 "\r\n");
-    context->getInput().append(s);
-    ASSERT_EQ(context->getInput().findCRLF(),context->getInput().peek()+24);
+    context->getInput()->append(s);
+    ASSERT_EQ(context->getInput()->findCRLF(),context->getInput()->peek()+24);
 
     ASSERT_TRUE(context->parseRequest());
     ASSERT_TRUE(context->parseFinsh());
 
-    HttpResponse response = context->getResponse();
-    response.makeResponse(HttpResponse::Code400_BadRequest, true);
-    response.appendToBuffer(&context->getOutput());
+    HttpResponse *response = context->getResponse();
+    response->makeResponse(HttpResponse::Code400_BadRequest, true);
+    response->appendToBuffer(context->getOutput());
 
-    int total = context->getOutput().readableBytes();
+    int total = context->getOutput()->readableBytes();
 
     int saveErrno;
     int ret = context->write(&saveErrno);
@@ -38,19 +38,19 @@ TEST(Response_test, test_make200Resp){
     string s("GET /testfile.md HTTP/1.1\r\n"
                 "Host: www.wws.com\r\n"
                 "\r\n");
-    context->getInput().append(s);
-    ASSERT_EQ(context->getInput().findCRLF(),context->getInput().peek()+25);
+    context->getInput()->append(s);
+    ASSERT_EQ(context->getInput()->findCRLF(),context->getInput()->peek()+25);
     ASSERT_TRUE(context->parseRequest());
     ASSERT_TRUE(context->parseFinsh());
 
-    HttpResponse response = context->getResponse();
-    response.setFilePath(".",context->getRequest().getPath());
-    response.makeResponse(HttpResponse::Code200_Ok, false);
-    response.appendToBuffer(&context->getOutput());
+    HttpResponse *response = context->getResponse();
+    response->setFilePath(".",context->getRequest()->getPath());
+    response->makeResponse(HttpResponse::Code200_Ok, false);
+    response->appendToBuffer(context->getOutput());
 
-    int total = context->getOutput().readableBytes();
+    int total = context->getOutput()->readableBytes();
 
     int saveErrno;
-    int ret = context->write(response.getFile(),response.getFileSize(), &saveErrno);
-    ASSERT_EQ(total + response.getFileSize(), ret);
+    int ret = context->write(response->getFile(),response->getFileSize(), &saveErrno);
+    ASSERT_EQ(total + response->getFileSize(), ret);
 }

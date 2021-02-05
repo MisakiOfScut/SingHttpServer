@@ -1,8 +1,6 @@
 #include "Epoll.h"
 using namespace sing;
 
-const int MAX_EVENT;
-
 Epoll::Epoll()
     :epollFd(epoll_create1(EPOLL_CLOEXEC)),
      eventsList(MAX_EVENT)
@@ -36,7 +34,7 @@ bool Epoll::delFd(int fd){
     return 0 == epoll_ctl(epollFd, EPOLL_CTL_DEL, fd, &ev);
 }
 
-int Epoll::wait(int timeoutMs = -1){
+int Epoll::wait(int timeoutMs){
     return epoll_wait(epollFd, &eventsList[0], static_cast<int>(eventsList.size()), timeoutMs);
 }
 

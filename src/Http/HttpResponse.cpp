@@ -39,7 +39,7 @@ const std::map<std::string, std::string> HttpResponse::suffix2Type = {
     通过addHeader设置Content-length和Content-type
     如果body是文件则另外append，不要通过body设置避免一次copy
 */
-void HttpResponse::appendToBuffer(Buffer* output) const{
+void HttpResponse::appendToBuffer(Buffer* const output) const{
     output->append("HTTP1.1 " + std::to_string(code) + " ");
     output->append(statusMessage);
     output->append("\r\n");
@@ -84,23 +84,23 @@ void HttpResponse::makeResponse(HttpStatusCode code, bool close){
     if(!path.empty()){
         /* 判断请求的资源文件 */
         if(stat((srcDir + path).data(), &mmFileStat) < 0 || S_ISDIR(mmFileStat.st_mode)) {
-            code = Code404_NotFound;
+            setStatusCode(Code404_NotFound);
             makeErrorResponse("File Not Found");
         }
         else if(!(mmFileStat.st_mode & S_IROTH)) {
-            code = Code403_Forbidden;
+            setStatusCode(Code403_Forbidden);
             makeErrorResponse("Access Denied");
         }
         else { 
             int srcFd = open((srcDir + path).data(), O_RDONLY);
             if(srcFd < 0) {
-                code = Code404_NotFound; 
+                setStatusCode(Code404_NotFound);
                 makeErrorResponse("File Not Found1");
             }else{
                 /* 将文件映射到内存提高文件的访问速度 MAP_PRIVATE 建立一个写入时拷贝的私有映射*/
                 void* mmRet = mmap(0, (size_t)mmFileStat.st_size, PROT_READ, MAP_PRIVATE, srcFd, 0);
                 if(mmRet == (void*)-1) {
-                    code = Code404_NotFound;
+                    setStatusCode(Code404_NotFound);
                     makeErrorResponse("File Not Found2");
                     return; 
                 }
@@ -154,4 +154,15 @@ void HttpResponse::unmapFile(){
 
 HttpResponse::~HttpResponse(){
     unmapFile();
+}
+
+void HttpResponse::reset(){
+    unmapFile();
+    mmFileStat = {0};
+    headers.clear();
+    code = Unknown;
+    statusMessage.clear();
+    body.clear();
+    srcDir.clear();
+    path.clear();
 }

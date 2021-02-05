@@ -12,7 +12,7 @@
 
 using namespace sing;
 
-const string HttpServer::srcDir = "../../ROOT";
+const std::string HttpServer::srcDir = "../webapps";//与exec文件同级
 
 HttpServer::HttpServer(int port, int thread_num, int time_out)
     :port(port)
@@ -30,7 +30,8 @@ HttpServer::~HttpServer(){
 }
 
 void HttpServer::start(){
-    epoller->addFd(listenfd, NULL, (EPOLLIN | EPOLLET));
+    HttpContext *listenContext = new HttpContext(listenfd);
+    assert(epoller->addFd(listenfd, listenContext, (EPOLLIN | EPOLLET))==true);
 
     int timeMs;
     while (1)
@@ -59,6 +60,7 @@ void HttpServer::start(){
                 std::cout << "Epoll: Unexpected event" << std::endl;//FIX ME: Use log
             }
         }
+        timerManager->tick();
     }
 }
 
@@ -81,7 +83,6 @@ void HttpServer::closeConnection(HttpContext* context){
     int fd = context->getFd();
     timerManager->delTimer(fd);
     epoller->delFd(fd);
-
     delete context;// !!!
     context = NULL;
 }
@@ -89,8 +90,7 @@ void HttpServer::closeConnection(HttpContext* context){
 //recv request and parse
 void HttpServer::doRequest(HttpContext* context){
     assert(context!=NULL);
-    timerManager->delTimer(context->getFd());
-
+    timerManager->delTimer(context->getFd());   
     int readErrno;
     int ret = context->read(&readErrno);//采取LT模式，不需要循环读完
 
@@ -106,35 +106,33 @@ void HttpServer::doRequest(HttpContext* context){
     }
 
     if(!context->parseRequest()){//parse reqst, close conn if err
-        HttpResponse response = context->getResponse();
-        response.makeResponse(HttpResponse::Code400_BadRequest, true);
-        response.appendToBuffer(&context->getOutput());
-        return;
+        HttpResponse* response = context->getResponse();
+        response->makeResponse(HttpResponse::Code400_BadRequest, true);
+        response->appendToBuffer(context->getOutput());
     }
 
     if(context->parseFinsh()){
-        HttpResponse response = context->getResponse();
-        response.setFilePath(srcDir, context->getRequest().getPath());
-        response.makeResponse(HttpResponse::Code200_Ok, false);
-        response.appendToBuffer(&context->getOutput());
-        epoller->modFd(context->getFd(), context, (EPOLLIN | EPOLLOUT | EPOLLONESHOT));
+        HttpResponse* response = context->getResponse();
+        response->setFilePath(srcDir, context->getRequest()->getPath());
+        response->makeResponse(HttpResponse::Code200_Ok, false);
+        response->appendToBuffer(context->getOutput());
     }
+    epoller->modFd(context->getFd(), context, (EPOLLOUT | EPOLLONESHOT));
 }
 
 //send response
 void HttpServer::doResponse(HttpContext* context){
     assert(context!=NULL);
     int fd = context->getFd();
-
     int writeErrno;int ret;
-    HttpResponse response = context->getResponse();
-    if(response.getFileSize()>0 && response.getFile()){
-        ret = context->write(response.getFile(), response.getFileSize(),&writeErrno);
+    HttpResponse* response = context->getResponse();
+    
+    if(response->getFileSize()>0 && response->getFile()){
+        ret = context->write(response->getFile(), response->getFileSize(),&writeErrno);
     }else{
         ret = context->write(&writeErrno);
     }
-
-    if(context->getOutput().readableBytes()==0){
+    if(context->getOutput()->readableBytes()==0){
         if(context->keepAlive()){
             context->reset();
             epoller->modFd(fd, context, (EPOLLIN | EPOLLONESHOT));

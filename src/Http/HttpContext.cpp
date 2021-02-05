@@ -102,7 +102,10 @@ bool HttpContext::parseFinsh(){
 
 void HttpContext::reset(){
     state = REQUEST_LINE;
+    input.retrieveAll();
+    output.retrieveAll();
     request.reset();
+    response.reset();
 }
 
 int HttpContext::write(char* file, size_t filesize, int* savedErrno){

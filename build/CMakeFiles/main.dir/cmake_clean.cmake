@@ -1,5 +1,11 @@
 file(REMOVE_RECURSE
   "CMakeFiles/main.dir/main.cpp.o"
+  "CMakeFiles/main.dir/src/Http/HttpContext.cpp.o"
+  "CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o"
+  "CMakeFiles/main.dir/src/Http/HttpServer.cpp.o"
+  "CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o"
+  "CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o"
+  "CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o"
   "main.pdb"
   "main"
 )

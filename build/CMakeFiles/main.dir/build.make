@@ -81,17 +81,173 @@ CMakeFiles/main.dir/main.cpp.o.provides: CMakeFiles/main.dir/main.cpp.o.requires
 CMakeFiles/main.dir/main.cpp.o.provides.build: CMakeFiles/main.dir/main.cpp.o
 
 
+CMakeFiles/main.dir/src/Http/HttpContext.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/Http/HttpContext.cpp.o: ../src/Http/HttpContext.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pc/wws/SingHttpServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/src/Http/HttpContext.cpp.o"
+	/usr/bin/x86_64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/Http/HttpContext.cpp.o -c /home/pc/wws/SingHttpServer/src/Http/HttpContext.cpp
+
+CMakeFiles/main.dir/src/Http/HttpContext.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/Http/HttpContext.cpp.i"
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pc/wws/SingHttpServer/src/Http/HttpContext.cpp > CMakeFiles/main.dir/src/Http/HttpContext.cpp.i
+
+CMakeFiles/main.dir/src/Http/HttpContext.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/Http/HttpContext.cpp.s"
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pc/wws/SingHttpServer/src/Http/HttpContext.cpp -o CMakeFiles/main.dir/src/Http/HttpContext.cpp.s
+
+CMakeFiles/main.dir/src/Http/HttpContext.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/Http/HttpContext.cpp.o.requires
+
+CMakeFiles/main.dir/src/Http/HttpContext.cpp.o.provides: CMakeFiles/main.dir/src/Http/HttpContext.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Http/HttpContext.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/Http/HttpContext.cpp.o.provides
+
+CMakeFiles/main.dir/src/Http/HttpContext.cpp.o.provides.build: CMakeFiles/main.dir/src/Http/HttpContext.cpp.o
+
+
+CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o: ../src/Http/HttpResponse.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pc/wws/SingHttpServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o"
+	/usr/bin/x86_64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o -c /home/pc/wws/SingHttpServer/src/Http/HttpResponse.cpp
+
+CMakeFiles/main.dir/src/Http/HttpResponse.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/Http/HttpResponse.cpp.i"
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pc/wws/SingHttpServer/src/Http/HttpResponse.cpp > CMakeFiles/main.dir/src/Http/HttpResponse.cpp.i
+
+CMakeFiles/main.dir/src/Http/HttpResponse.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/Http/HttpResponse.cpp.s"
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pc/wws/SingHttpServer/src/Http/HttpResponse.cpp -o CMakeFiles/main.dir/src/Http/HttpResponse.cpp.s
+
+CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o.requires
+
+CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o.provides: CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o.provides
+
+CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o.provides.build: CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o
+
+
+CMakeFiles/main.dir/src/Http/HttpServer.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/Http/HttpServer.cpp.o: ../src/Http/HttpServer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pc/wws/SingHttpServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/src/Http/HttpServer.cpp.o"
+	/usr/bin/x86_64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/Http/HttpServer.cpp.o -c /home/pc/wws/SingHttpServer/src/Http/HttpServer.cpp
+
+CMakeFiles/main.dir/src/Http/HttpServer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/Http/HttpServer.cpp.i"
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pc/wws/SingHttpServer/src/Http/HttpServer.cpp > CMakeFiles/main.dir/src/Http/HttpServer.cpp.i
+
+CMakeFiles/main.dir/src/Http/HttpServer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/Http/HttpServer.cpp.s"
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pc/wws/SingHttpServer/src/Http/HttpServer.cpp -o CMakeFiles/main.dir/src/Http/HttpServer.cpp.s
+
+CMakeFiles/main.dir/src/Http/HttpServer.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/Http/HttpServer.cpp.o.requires
+
+CMakeFiles/main.dir/src/Http/HttpServer.cpp.o.provides: CMakeFiles/main.dir/src/Http/HttpServer.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Http/HttpServer.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/Http/HttpServer.cpp.o.provides
+
+CMakeFiles/main.dir/src/Http/HttpServer.cpp.o.provides.build: CMakeFiles/main.dir/src/Http/HttpServer.cpp.o
+
+
+CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o: ../src/Buffer/Buffer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pc/wws/SingHttpServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o"
+	/usr/bin/x86_64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o -c /home/pc/wws/SingHttpServer/src/Buffer/Buffer.cpp
+
+CMakeFiles/main.dir/src/Buffer/Buffer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/Buffer/Buffer.cpp.i"
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pc/wws/SingHttpServer/src/Buffer/Buffer.cpp > CMakeFiles/main.dir/src/Buffer/Buffer.cpp.i
+
+CMakeFiles/main.dir/src/Buffer/Buffer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/Buffer/Buffer.cpp.s"
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pc/wws/SingHttpServer/src/Buffer/Buffer.cpp -o CMakeFiles/main.dir/src/Buffer/Buffer.cpp.s
+
+CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o.requires
+
+CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o.provides: CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o.provides
+
+CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o.provides.build: CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o
+
+
+CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o: ../src/Timer/TimerManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pc/wws/SingHttpServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o"
+	/usr/bin/x86_64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o -c /home/pc/wws/SingHttpServer/src/Timer/TimerManager.cpp
+
+CMakeFiles/main.dir/src/Timer/TimerManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/Timer/TimerManager.cpp.i"
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pc/wws/SingHttpServer/src/Timer/TimerManager.cpp > CMakeFiles/main.dir/src/Timer/TimerManager.cpp.i
+
+CMakeFiles/main.dir/src/Timer/TimerManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/Timer/TimerManager.cpp.s"
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pc/wws/SingHttpServer/src/Timer/TimerManager.cpp -o CMakeFiles/main.dir/src/Timer/TimerManager.cpp.s
+
+CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o.requires
+
+CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o.provides: CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o.provides
+
+CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o.provides.build: CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o
+
+
+CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o: ../src/Epoll/Epoll.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pc/wws/SingHttpServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o"
+	/usr/bin/x86_64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o -c /home/pc/wws/SingHttpServer/src/Epoll/Epoll.cpp
+
+CMakeFiles/main.dir/src/Epoll/Epoll.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/Epoll/Epoll.cpp.i"
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pc/wws/SingHttpServer/src/Epoll/Epoll.cpp > CMakeFiles/main.dir/src/Epoll/Epoll.cpp.i
+
+CMakeFiles/main.dir/src/Epoll/Epoll.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/Epoll/Epoll.cpp.s"
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pc/wws/SingHttpServer/src/Epoll/Epoll.cpp -o CMakeFiles/main.dir/src/Epoll/Epoll.cpp.s
+
+CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o.requires
+
+CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o.provides: CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o.provides
+
+CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o.provides.build: CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o
+
+
 # Object files for target main
 main_OBJECTS = \
-"CMakeFiles/main.dir/main.cpp.o"
+"CMakeFiles/main.dir/main.cpp.o" \
+"CMakeFiles/main.dir/src/Http/HttpContext.cpp.o" \
+"CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o" \
+"CMakeFiles/main.dir/src/Http/HttpServer.cpp.o" \
+"CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o" \
+"CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o" \
+"CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/main.cpp.o
+main: CMakeFiles/main.dir/src/Http/HttpContext.cpp.o
+main: CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o
+main: CMakeFiles/main.dir/src/Http/HttpServer.cpp.o
+main: CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o
+main: CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o
+main: CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pc/wws/SingHttpServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pc/wws/SingHttpServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -100,6 +256,12 @@ CMakeFiles/main.dir/build: main
 .PHONY : CMakeFiles/main.dir/build
 
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/main.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/Http/HttpContext.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/Http/HttpServer.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o.requires
 
 .PHONY : CMakeFiles/main.dir/requires
 

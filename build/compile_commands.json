@@ -5,6 +5,36 @@
   "file": "/home/pc/wws/SingHttpServer/main.cpp"
 },
 {
+  "directory": "/home/pc/wws/SingHttpServer/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/main.dir/src/Http/HttpContext.cpp.o -c /home/pc/wws/SingHttpServer/src/Http/HttpContext.cpp",
+  "file": "/home/pc/wws/SingHttpServer/src/Http/HttpContext.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o -c /home/pc/wws/SingHttpServer/src/Http/HttpResponse.cpp",
+  "file": "/home/pc/wws/SingHttpServer/src/Http/HttpResponse.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/main.dir/src/Http/HttpServer.cpp.o -c /home/pc/wws/SingHttpServer/src/Http/HttpServer.cpp",
+  "file": "/home/pc/wws/SingHttpServer/src/Http/HttpServer.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o -c /home/pc/wws/SingHttpServer/src/Buffer/Buffer.cpp",
+  "file": "/home/pc/wws/SingHttpServer/src/Buffer/Buffer.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o -c /home/pc/wws/SingHttpServer/src/Timer/TimerManager.cpp",
+  "file": "/home/pc/wws/SingHttpServer/src/Timer/TimerManager.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o -c /home/pc/wws/SingHttpServer/src/Epoll/Epoll.cpp",
+  "file": "/home/pc/wws/SingHttpServer/src/Epoll/Epoll.cpp"
+},
+{
   "directory": "/home/pc/wws/SingHttpServer/build/test",
   "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/Threadpool_test.dir/Threadpool_test.cpp.o -c /home/pc/wws/SingHttpServer/test/Threadpool_test.cpp",
   "file": "/home/pc/wws/SingHttpServer/test/Threadpool_test.cpp"
@@ -12,6 +42,46 @@
 {
   "directory": "/home/pc/wws/SingHttpServer/build/test",
   "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/Threadpool_test.dir/GTestAll.cpp.o -c /home/pc/wws/SingHttpServer/test/GTestAll.cpp",
+  "file": "/home/pc/wws/SingHttpServer/test/GTestAll.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build/test",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/Server_test.dir/__/src/Http/HttpContext.cpp.o -c /home/pc/wws/SingHttpServer/src/Http/HttpContext.cpp",
+  "file": "/home/pc/wws/SingHttpServer/src/Http/HttpContext.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build/test",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/Server_test.dir/__/src/Http/HttpResponse.cpp.o -c /home/pc/wws/SingHttpServer/src/Http/HttpResponse.cpp",
+  "file": "/home/pc/wws/SingHttpServer/src/Http/HttpResponse.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build/test",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/Server_test.dir/__/src/Http/HttpServer.cpp.o -c /home/pc/wws/SingHttpServer/src/Http/HttpServer.cpp",
+  "file": "/home/pc/wws/SingHttpServer/src/Http/HttpServer.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build/test",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/Server_test.dir/__/src/Timer/TimerManager.cpp.o -c /home/pc/wws/SingHttpServer/src/Timer/TimerManager.cpp",
+  "file": "/home/pc/wws/SingHttpServer/src/Timer/TimerManager.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build/test",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/Server_test.dir/__/src/Buffer/Buffer.cpp.o -c /home/pc/wws/SingHttpServer/src/Buffer/Buffer.cpp",
+  "file": "/home/pc/wws/SingHttpServer/src/Buffer/Buffer.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build/test",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/Server_test.dir/__/src/Epoll/Epoll.cpp.o -c /home/pc/wws/SingHttpServer/src/Epoll/Epoll.cpp",
+  "file": "/home/pc/wws/SingHttpServer/src/Epoll/Epoll.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build/test",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/Server_test.dir/Server_test.cpp.o -c /home/pc/wws/SingHttpServer/test/Server_test.cpp",
+  "file": "/home/pc/wws/SingHttpServer/test/Server_test.cpp"
+},
+{
+  "directory": "/home/pc/wws/SingHttpServer/build/test",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I/home/pc/wws/SingHttpServer/src  -g   -o CMakeFiles/Server_test.dir/GTestAll.cpp.o -c /home/pc/wws/SingHttpServer/test/GTestAll.cpp",
   "file": "/home/pc/wws/SingHttpServer/test/GTestAll.cpp"
 },
 {

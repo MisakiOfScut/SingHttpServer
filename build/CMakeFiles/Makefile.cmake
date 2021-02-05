@@ -54,6 +54,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/main.dir/DependInfo.cmake"
   "test/CMakeFiles/Threadpool_test.dir/DependInfo.cmake"
+  "test/CMakeFiles/Server_test.dir/DependInfo.cmake"
   "test/CMakeFiles/Buffer_test.dir/DependInfo.cmake"
   "test/CMakeFiles/Timer_test.dir/DependInfo.cmake"
   "test/CMakeFiles/Response_test.dir/DependInfo.cmake"

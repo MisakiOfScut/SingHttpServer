@@ -1,0 +1,167 @@
+<!DOCTYPE html><!--文档声明，告知 Web 浏览器页面使用了HTML版本5，放在html标签前-->
+<html><!--元素定义了整个HTML文档，整个页面内容要在html标签内-->
+    <head><!--<head>元素是所有头部元素的容器。<head> 元素必须包含文档的标题（title），可以包含脚本、样式、meta 信息 以及其他更多的信息-->
+        <!--head包含的信息通过不同标签写在<head>标签内-->
+
+        <meta charset="utf-8"><!--meta描述 HTML文档的元数据，比如页面使用的字符集-->
+        <title>计网知识点</title><!--页面标题，通过<title>标签设置-->
+
+        <!--<link> 标签定义文档与外部资源的关系,链接样式表或js脚本，href属性指定链接的目标-->
+        <link rel="stylesheet" type="text/css" href="kp.css"> 
+    </head>
+    <body><!--<body>元素定义了HTML文档的主体，body元素包含文档的所有内容（比如文本、超链接、图像、表格和列表等等-->
+
+        <div class="header">
+            <h1>计网知识点——按网络层次结构分类</h1><!--1级标题，1-6字体大小、粗细递减-->
+        </div><!--<div>标签定义HTML文档中的一个分隔区块或者一个区域部分，<div>可以嵌套其他div-->
+
+        <div class="list">
+            <h2>Chapter1: Introduction</h2>
+            <ul><!--<ul> 标签定义无序列表,将 <ul> 标签与 <li> 标签一起使用，创建无序列表-->                
+                <h4>1.2 Network edge</h4>
+                <li> App’s using TCP and why? Such as HTTP , FTP , Telnet, SMTP</li><!--<li> 标签定义列表项目，内容嵌套在标签中-->
+                <li>App’s using UDP and why? streaming media, DNS, Skype</li> 
+
+                <h4>1.3 Network core</h4> 
+                <li>Packet and Circuit Switching</li>
+
+                <h4>1.4 Performance: delay, loss and throughput in packet-switched networks</h4>
+                <li>Four sources of packet delay</li>
+                <li>Throughput</li>
+
+                <h4>1.5 Protocol layers, service models</h4>
+                <li>Layers and functions of ISO/OSI reference model</li>
+                <li>Data encapsulation process of TCP/IP</li>
+            </ul>
+        </div>
+        <div class="list">
+            <h2>Chapter2: Application layer</h2>
+            <ul>
+                <h4>2.1 Principles of network applications</h4>
+                <li>Application layer protocol and Underlying transport protocol (such as SMTP, POP3,Telnet, HTTP, FTP )</li>
+                <li>Transport service requirements of common apps </li>
+
+                <h4>2.2 Web and HTTP</h4>
+                <li>Function of URL</li>
+                <li>What is the transport layer protocol of HTTP?</li>
+                <li>Process of requesting objects by HTTP</li>
+
+                <h4>2.4 Electronic Mail </h4>
+                <li>SMTP: sending email to the receiver’s server</li>
+                <li>POP3 and IMAP: receive email from receiver’s server</li>
+
+                <h4>2.5 DNS</h4>
+                <li>Functions of DNS: hostname to IP address translation</li>
+                <li>Why not centralize DNS?</li>
+                <li>What are the DNS servers that are queried (in order) to find an specified IP address</li>
+            </ul>
+        </div>
+        <div class="list">
+            <h2>Chapter3: Transport Layer</h2>
+            <ul>
+                <h4>3.1 Transport-layer services</h4>
+                <li>Differences on providing data transmission services 
+                <br>&nbsp&nbsp&nbsp&nbsp&nbsp-network layer: between end-to-end hosts 
+                <br>&nbsp&nbsp&nbsp&nbsp&nbsp-transport layer: between application processes 
+                </li>
+                <li>What are the reliable, in-order delivery of TCP
+                    <br>&nbsp&nbsp&nbsp&nbsp&nbsp-congestion control, flow control, connection management
+                </li>
+
+                <h4>3.2 Multiplexing and demultiplexing</h4>
+                <li>Meanings of multiplexing and demultiplexing</li>
+                <li>UDP socket identified by  two-tuple (dest IP address, dest port number)</li>
+                <li>TCP socket identified by 4-tuple (source IP address, source port number, dest IP address, dest port number)</li>
+
+                <h4>3.3 Connectionless transport: UDP</h4>
+
+                <h4>3.4 Principles of reliable data transfer</h4>
+                <li>principles of reliable data transfer for GBN and SR 
+                    <br>&nbsp&nbsp&nbsp&nbsp&nbsp-“window” , ACK(n), Timeout (n)
+                </li>
+                <li>Comparison of the window size for the alternating bit, SR, and GBN protocol</li>
+
+                <h4>3.5 Connection-oriented transport: TCP</h4>
+                <li>TCP segment: all of fields and length of header(20 Bytes)</li>
+                <li>TCP reliable data transfer</li>
+                <li>connection management: Three-way handshaking</li>
+
+                <h4>3.6 TCP congestion control</h4>
+                <li>Different from flow control</li>
+                <li>TCP Slow Start</li>
+            </ul>
+        </div>
+        <div class="list">
+            <h2>Chapter4: Network Layer</h2>
+            <ul>
+                <h4>4. 1 Services of Network-Layer</h4>
+                <li>Two key functions: forwarding and routing.</li>
+                               
+                <h4>4.2 Virtual circuit and datagram networks</h4>
+                <li>provide network layer connection and connection-less service respectively.</li>
+                <li>Characteristics of Virtual circuit and datagram networks</li>
+
+                <h4>4.3 What’s inside a router</h4>
+
+                <h4>4.4 IP: Internet Protocol</h4>
+                <li>Interface 、IP address</li>
+                <li>Datagram format : all of fields and length of fixed header(20 Bytes)</li>
+                <li>IP Fragmentation : MTU--see example of book</li>
+                <li>IPv4 addressing--IP address, Subnets and mask, Subnet classification, route aggregation
+                    <br>IPv6, Subnet Mask
+                </li>
+                <li>ICMP: error reporting and echo request/reply (used by ping)</li>
+                <li>Traceroute and ICMP</li>
+
+                <h4>4.5 Routing algorithms</h4>
+                <li>Link state--Dijkstra’s algorithm</li>
+                <li>Distance Vector algorithm</li>
+                <li>Two reasons of hierarchical routing for Internet</li>
+                
+                
+              
+                <h4>4.6 Routing in the Internet</h4>
+                <li>What routing algorithms are intra-As or inter-AS
+                    <br>&nbsp&nbsp&nbsp&nbsp&nbsp-RIP, OSPF , BGP and what routing algorithm  they are based on
+                    <br>&nbsp&nbsp&nbsp&nbsp&nbsp-Different from RIP, BGP announce the  sequence of ASes on the routes to destinations
+                </li>
+                <li>What is the main dominant issue for routing among Ases
+                    <br>&nbsp&nbsp&nbsp&nbsp&nbsp-Routing Policy
+                </li>
+            </ul>
+        </div>
+        <div class="list">
+            <h2>Chapter5: The Data Link Layer</h2>
+            <ul>
+                <h4>5.1 Data transmission services</h4>
+                <li>data link layer : between adjacent nodes over a link</li>
+
+                <h4>5.2 Error detection and correction</h4>
+                <li> CRC: how to generate frame with CRC and how to detect the error by CRC</li>
+
+                <h4>5.3 Multiple access protocols</h4>
+                <li>Two types of “links”: point-to-point & broadcast </li>
+                <li>Collision of broadcast channel</li>
+                <li>Data link layer is divided into two sub-layers: LLC and MAC</li>
+                <li> Multiple access protocol-three broad classes
+                    <br>&nbsp&nbsp&nbsp&nbsp&nbsp-Channel Partitioning: TDMA 、FDMA、 ……
+                    <br>&nbsp&nbsp&nbsp&nbsp&nbsp-Random Access: ALOHA、CSMA、 CSMA\CD、……
+                    <br>&nbsp&nbsp&nbsp&nbsp&nbsp-“Taking turns”：Tokening Ring
+                </li>
+
+                <h4>5.4 Link-Layer Addressing</h4>
+                <li>MAC address ：assigned at manufacturing time</li>
+                <li>ARP
+                    <br>&nbsp&nbsp&nbsp&nbsp&nbsp-ARP: IP address -> MAC address
+                    <br>&nbsp&nbsp&nbsp&nbsp&nbsp-encapsulated in a link-layer broadcast frame
+                    <br>&nbsp&nbsp&nbsp&nbsp&nbsp-process of ARP query and ARP addressing routing to another LAN
+                </li>
+
+                <h4>5.6 Link-layer switches</h4>
+                <li>witch- link-layer device: 
+                    <br>&nbsp&nbsp&nbsp&nbsp&nbsp-Feathers of Switch and creation of Switch table : self-learning
+                </li>
+            </ul>
+        </div>
+    </body>
+</html><!--一般把注释写在闭合标签后以区分不同的闭合标签，尤其是在多个div标签的情况下-->

@@ -1,0 +1,24 @@
+body{/*设置页面整体的样式*/
+    margin: 0;/*页边距设置为0*/
+}
+li{/*设置列表项的样式*/
+    margin-left: 30px;/*左外边距为30*/
+}
+h4{/*设置第四级标题样式*/
+    margin-bottom: 2px;/*底外边距为2*/
+}
+/*上面的设置是全局的，不需要通过属性指定*/
+
+.header{/*css类，通过在html标签中设置属性class使用*/
+    height: 100px;/*div内容高度100像素*/
+    padding-top: 5px;/*内边距-顶部*/
+    padding-left: 5px;/*内边距-左部*/
+    background-color: rgb(44, 135, 238);/*背景颜色*/
+    color: rgb(255, 255, 255);/*字体颜色*/
+}
+.list{
+    padding-top: 5px;/*内边距-顶部*/
+    padding-left: 5px;/*内边距-左部*/
+    font-family: 'Times New Roman', Times, serif;/*字体*/
+    border-bottom:1px solid black;/*设置div底部边框大小颜色*/
+}

@@ -18,7 +18,8 @@ public:
         assert(thread_num>0);
         for (size_t i = 0; i < thread_num; i++)
         {
-            std::thread([pool = pool_] {//[]中将s_ptr交由线程的s_ptr对象托管
+            //std::thread
+            threads.emplace_back([pool = pool_] {//[]中将s_ptr交由线程的s_ptr对象托管
                 std::unique_lock<std::mutex> lock(pool->mutex);
                 while (1)
                 {
@@ -30,7 +31,7 @@ public:
                         task();//执行工作
                         lock.lock();//执行完后尝试获取锁，为下一次循环访问临界区做准备
 
-                    }else if (pool->running==false)
+                    }else if (pool->stop==true)
                     {
                         break;
 
@@ -57,7 +58,8 @@ public:
                     if(func)func();
                 }
                 */
-        }).detach();
+        });
+        //.detach();
         }
     }
 
@@ -65,9 +67,12 @@ public:
         if ((bool)pool_)
         {
             std::lock_guard<std::mutex> lock(pool_->mutex);
-            pool_->running = false;
+            pool_->stop = true;
         }
         pool_->cond.notify_all();
+for(auto& thread:threads){
+    thread.join();
+}       
     }
     ThreadPool()=default;
     ThreadPool(ThreadPool&&) = default;
@@ -86,9 +91,11 @@ private:
         std::mutex mutex;
         std::condition_variable cond;
         std::queue<std::function<void()>> tasksQueue;
-        bool running;
+        bool stop;
     };
-    std::shared_ptr<poolData> pool_;//用共享指针使得所有线程共享一份数据    
+    std::shared_ptr<poolData> pool_;//用共享指针使得所有线程共享一份数据   
+
+std::vector<std::thread> threads;
 };
 
 }

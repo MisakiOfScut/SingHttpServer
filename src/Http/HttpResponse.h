@@ -13,7 +13,7 @@ class Buffer;
 class HttpResponse
 {
 public:
-    static const int TIMEOUT = 500;
+    static const int TIMEOUT = 5;//5s
     static const std::map<int, std::string> statusCode2Message;
     static const std::map<std::string, std::string> suffix2Type;
     enum HttpStatusCode
@@ -44,9 +44,11 @@ public:
 
     void setBody(const string& bd){body = bd;}
 
-    void appendToBuffer(Buffer* output) const;
+    void appendToBuffer(Buffer*const output) const;
 
     void makeResponse(HttpStatusCode code, bool close);
+
+    void reset();
 
     //provide file_ptr to write file to fd without appending buffer
     char* getFile();

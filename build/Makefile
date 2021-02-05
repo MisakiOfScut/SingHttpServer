@@ -170,6 +170,19 @@ Threadpool_test/fast:
 .PHONY : Threadpool_test/fast
 
 #=============================================================================
+# Target rules for targets named Server_test
+
+# Build rule for target.
+Server_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Server_test
+.PHONY : Server_test
+
+# fast build rule for target.
+Server_test/fast:
+	$(MAKE) -f test/CMakeFiles/Server_test.dir/build.make test/CMakeFiles/Server_test.dir/build
+.PHONY : Server_test/fast
+
+#=============================================================================
 # Target rules for targets named Buffer_test
 
 # Build rule for target.
@@ -248,6 +261,168 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/Buffer/Buffer.o: src/Buffer/Buffer.cpp.o
+
+.PHONY : src/Buffer/Buffer.o
+
+# target to build an object file
+src/Buffer/Buffer.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Buffer/Buffer.cpp.o
+.PHONY : src/Buffer/Buffer.cpp.o
+
+src/Buffer/Buffer.i: src/Buffer/Buffer.cpp.i
+
+.PHONY : src/Buffer/Buffer.i
+
+# target to preprocess a source file
+src/Buffer/Buffer.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Buffer/Buffer.cpp.i
+.PHONY : src/Buffer/Buffer.cpp.i
+
+src/Buffer/Buffer.s: src/Buffer/Buffer.cpp.s
+
+.PHONY : src/Buffer/Buffer.s
+
+# target to generate assembly for a file
+src/Buffer/Buffer.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Buffer/Buffer.cpp.s
+.PHONY : src/Buffer/Buffer.cpp.s
+
+src/Epoll/Epoll.o: src/Epoll/Epoll.cpp.o
+
+.PHONY : src/Epoll/Epoll.o
+
+# target to build an object file
+src/Epoll/Epoll.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Epoll/Epoll.cpp.o
+.PHONY : src/Epoll/Epoll.cpp.o
+
+src/Epoll/Epoll.i: src/Epoll/Epoll.cpp.i
+
+.PHONY : src/Epoll/Epoll.i
+
+# target to preprocess a source file
+src/Epoll/Epoll.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Epoll/Epoll.cpp.i
+.PHONY : src/Epoll/Epoll.cpp.i
+
+src/Epoll/Epoll.s: src/Epoll/Epoll.cpp.s
+
+.PHONY : src/Epoll/Epoll.s
+
+# target to generate assembly for a file
+src/Epoll/Epoll.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Epoll/Epoll.cpp.s
+.PHONY : src/Epoll/Epoll.cpp.s
+
+src/Http/HttpContext.o: src/Http/HttpContext.cpp.o
+
+.PHONY : src/Http/HttpContext.o
+
+# target to build an object file
+src/Http/HttpContext.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Http/HttpContext.cpp.o
+.PHONY : src/Http/HttpContext.cpp.o
+
+src/Http/HttpContext.i: src/Http/HttpContext.cpp.i
+
+.PHONY : src/Http/HttpContext.i
+
+# target to preprocess a source file
+src/Http/HttpContext.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Http/HttpContext.cpp.i
+.PHONY : src/Http/HttpContext.cpp.i
+
+src/Http/HttpContext.s: src/Http/HttpContext.cpp.s
+
+.PHONY : src/Http/HttpContext.s
+
+# target to generate assembly for a file
+src/Http/HttpContext.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Http/HttpContext.cpp.s
+.PHONY : src/Http/HttpContext.cpp.s
+
+src/Http/HttpResponse.o: src/Http/HttpResponse.cpp.o
+
+.PHONY : src/Http/HttpResponse.o
+
+# target to build an object file
+src/Http/HttpResponse.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Http/HttpResponse.cpp.o
+.PHONY : src/Http/HttpResponse.cpp.o
+
+src/Http/HttpResponse.i: src/Http/HttpResponse.cpp.i
+
+.PHONY : src/Http/HttpResponse.i
+
+# target to preprocess a source file
+src/Http/HttpResponse.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Http/HttpResponse.cpp.i
+.PHONY : src/Http/HttpResponse.cpp.i
+
+src/Http/HttpResponse.s: src/Http/HttpResponse.cpp.s
+
+.PHONY : src/Http/HttpResponse.s
+
+# target to generate assembly for a file
+src/Http/HttpResponse.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Http/HttpResponse.cpp.s
+.PHONY : src/Http/HttpResponse.cpp.s
+
+src/Http/HttpServer.o: src/Http/HttpServer.cpp.o
+
+.PHONY : src/Http/HttpServer.o
+
+# target to build an object file
+src/Http/HttpServer.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Http/HttpServer.cpp.o
+.PHONY : src/Http/HttpServer.cpp.o
+
+src/Http/HttpServer.i: src/Http/HttpServer.cpp.i
+
+.PHONY : src/Http/HttpServer.i
+
+# target to preprocess a source file
+src/Http/HttpServer.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Http/HttpServer.cpp.i
+.PHONY : src/Http/HttpServer.cpp.i
+
+src/Http/HttpServer.s: src/Http/HttpServer.cpp.s
+
+.PHONY : src/Http/HttpServer.s
+
+# target to generate assembly for a file
+src/Http/HttpServer.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Http/HttpServer.cpp.s
+.PHONY : src/Http/HttpServer.cpp.s
+
+src/Timer/TimerManager.o: src/Timer/TimerManager.cpp.o
+
+.PHONY : src/Timer/TimerManager.o
+
+# target to build an object file
+src/Timer/TimerManager.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Timer/TimerManager.cpp.o
+.PHONY : src/Timer/TimerManager.cpp.o
+
+src/Timer/TimerManager.i: src/Timer/TimerManager.cpp.i
+
+.PHONY : src/Timer/TimerManager.i
+
+# target to preprocess a source file
+src/Timer/TimerManager.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Timer/TimerManager.cpp.i
+.PHONY : src/Timer/TimerManager.cpp.i
+
+src/Timer/TimerManager.s: src/Timer/TimerManager.cpp.s
+
+.PHONY : src/Timer/TimerManager.s
+
+# target to generate assembly for a file
+src/Timer/TimerManager.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Timer/TimerManager.cpp.s
+.PHONY : src/Timer/TimerManager.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -261,6 +436,7 @@ help:
 	@echo "... package_source"
 	@echo "... package"
 	@echo "... Threadpool_test"
+	@echo "... Server_test"
 	@echo "... Buffer_test"
 	@echo "... Timer_test"
 	@echo "... Response_test"
@@ -268,6 +444,24 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/Buffer/Buffer.o"
+	@echo "... src/Buffer/Buffer.i"
+	@echo "... src/Buffer/Buffer.s"
+	@echo "... src/Epoll/Epoll.o"
+	@echo "... src/Epoll/Epoll.i"
+	@echo "... src/Epoll/Epoll.s"
+	@echo "... src/Http/HttpContext.o"
+	@echo "... src/Http/HttpContext.i"
+	@echo "... src/Http/HttpContext.s"
+	@echo "... src/Http/HttpResponse.o"
+	@echo "... src/Http/HttpResponse.i"
+	@echo "... src/Http/HttpResponse.s"
+	@echo "... src/Http/HttpServer.o"
+	@echo "... src/Http/HttpServer.i"
+	@echo "... src/Http/HttpServer.s"
+	@echo "... src/Timer/TimerManager.o"
+	@echo "... src/Timer/TimerManager.i"
+	@echo "... src/Timer/TimerManager.s"
 .PHONY : help
 
 

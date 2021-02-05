@@ -28,8 +28,10 @@ void TimerManager::updTimer(int fd, int timeout){
 
 //use lazy delete a timer
 void TimerManager::delTimer(int fd){
-    Timer* t = map[fd];
-    t->del();//just set the callback NULL
+    if(map.count(fd)>0){
+        Timer* t = map[fd];
+        t->del();//just set the callback NULL
+    }
 }
 
 int TimerManager::getNextTimeout(){

@@ -28,10 +28,10 @@ public:
     */
     int getFd(){ return fd; }
     void setFd(int fd){ assert(fd>=0); this->fd = fd; }
-    Buffer& getInput(){ return input; }
-    Buffer& getOutput(){ return output; }
-    HttpRequest& getRequest(){ return request; }
-    HttpResponse& getResponse(){ return response; }
+    Buffer* getInput(){ return &input; }
+    Buffer* getOutput(){ return &output; }
+    HttpRequest* getRequest(){ return &request; }
+    HttpResponse* getResponse(){ return &response; }
 
     int read(int *savedErrno){ return input.readFd(fd,savedErrno);}
     int write(int *savedErrno){ return output.writeFd(fd,savedErrno);}

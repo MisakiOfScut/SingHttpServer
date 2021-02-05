@@ -1,6 +1,7 @@
 #ifndef __HTTPSERVER_H__
 #define __HTTPSERVER_H__
 #include <memory>
+#include <string>
 
 namespace sing
 {
@@ -13,7 +14,7 @@ class HttpContext;
 class HttpServer
 {
 public:
-    static const string srcDir;
+    static const std::string srcDir;
 
     int createListenFd();
     int setNonblocking(int fd);
