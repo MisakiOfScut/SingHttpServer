@@ -11,6 +11,8 @@ Buffer.h
 /home/pc/wws/SingHttpServer/src/Buffer/Buffer.h
 bits/types/struct_iovec.h
 -
+sys/uio.h
+-
 errno.h
 -
 unistd.h

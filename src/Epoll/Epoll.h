@@ -8,7 +8,9 @@
 
 namespace sing
 {
-/* 封装基本的epoll操作 */
+class HttpContext;
+class ThreadPool;
+
 class Epoll
 {
 public:
@@ -16,12 +18,12 @@ public:
 
     Epoll();
     ~Epoll();
-    bool addFd(int fd, uint32_t events);
-    bool modFd(int fd, uint32_t events);
+    bool addFd(int fd, HttpContext* context, uint32_t events);
+    bool modFd(int fd, HttpContext* context, uint32_t events);
     bool delFd(int fd);
     int wait(int timeoutMs = -1);
-    int getEventFd(int index) const;
     uint32_t getEvents(int index) const;
+    HttpContext* getDataPtr(int index);
 
 private:
     int epollFd;

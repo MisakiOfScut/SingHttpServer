@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pc/wws/SingHttpServer/test/HttpRequest_test.cpp" "/home/pc/wws/SingHttpServer/build/test/CMakeFiles/HttpRequest_test.dir/HttpRequest_test.cpp.o"
   "/home/pc/wws/SingHttpServer/src/Buffer/Buffer.cpp" "/home/pc/wws/SingHttpServer/build/test/CMakeFiles/HttpRequest_test.dir/__/src/Buffer/Buffer.cpp.o"
   "/home/pc/wws/SingHttpServer/src/Http/HttpContext.cpp" "/home/pc/wws/SingHttpServer/build/test/CMakeFiles/HttpRequest_test.dir/__/src/Http/HttpContext.cpp.o"
+  "/home/pc/wws/SingHttpServer/src/Http/HttpResponse.cpp" "/home/pc/wws/SingHttpServer/build/test/CMakeFiles/HttpRequest_test.dir/__/src/Http/HttpResponse.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

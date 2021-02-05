@@ -1,6 +1,7 @@
 #include "HttpContext.h"
 #include <unistd.h>
 #include <iostream>
+#include <bits/types/struct_iovec.h>
 using namespace sing;
 
 HttpContext::HttpContext(int fd)
@@ -102,4 +103,8 @@ bool HttpContext::parseFinsh(){
 void HttpContext::reset(){
     state = REQUEST_LINE;
     request.reset();
+}
+
+int HttpContext::write(char* file, size_t filesize, int* savedErrno){
+    return output.writeFd(fd, file, filesize, savedErrno);
 }

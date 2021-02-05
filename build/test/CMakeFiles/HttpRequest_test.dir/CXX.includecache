@@ -11,6 +11,8 @@ Buffer.h
 /home/pc/wws/SingHttpServer/src/Buffer/Buffer.h
 bits/types/struct_iovec.h
 -
+sys/uio.h
+-
 errno.h
 -
 unistd.h
@@ -37,10 +39,14 @@ unistd.h
 -
 iostream
 -
+bits/types/struct_iovec.h
+-
 
 /home/pc/wws/SingHttpServer/src/Http/HttpContext.h
 HttpRequest.h
 /home/pc/wws/SingHttpServer/src/Http/HttpRequest.h
+HttpResponse.h
+/home/pc/wws/SingHttpServer/src/Http/HttpResponse.h
 ../Buffer/Buffer.h
 /home/pc/wws/SingHttpServer/src/Buffer/Buffer.h
 
@@ -50,6 +56,26 @@ string
 chrono
 -
 map
+-
+
+/home/pc/wws/SingHttpServer/src/Http/HttpResponse.cpp
+HttpResponse.h
+/home/pc/wws/SingHttpServer/src/Http/HttpResponse.h
+../Buffer/Buffer.h
+/home/pc/wws/SingHttpServer/src/Buffer/Buffer.h
+unistd.h
+-
+fcntl.h
+-
+
+/home/pc/wws/SingHttpServer/src/Http/HttpResponse.h
+map
+-
+string
+-
+sys/stat.h
+-
+sys/mman.h
 -
 
 /home/pc/wws/SingHttpServer/test/GTestAll.cpp

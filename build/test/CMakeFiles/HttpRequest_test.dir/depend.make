@@ -6,6 +6,7 @@ test/CMakeFiles/HttpRequest_test.dir/GTestAll.cpp.o: ../test/GTestAll.cpp
 test/CMakeFiles/HttpRequest_test.dir/HttpRequest_test.cpp.o: ../src/Buffer/Buffer.h
 test/CMakeFiles/HttpRequest_test.dir/HttpRequest_test.cpp.o: ../src/Http/HttpContext.h
 test/CMakeFiles/HttpRequest_test.dir/HttpRequest_test.cpp.o: ../src/Http/HttpRequest.h
+test/CMakeFiles/HttpRequest_test.dir/HttpRequest_test.cpp.o: ../src/Http/HttpResponse.h
 test/CMakeFiles/HttpRequest_test.dir/HttpRequest_test.cpp.o: ../test/HttpRequest_test.cpp
 
 test/CMakeFiles/HttpRequest_test.dir/__/src/Buffer/Buffer.cpp.o: ../src/Buffer/Buffer.cpp
@@ -15,4 +16,9 @@ test/CMakeFiles/HttpRequest_test.dir/__/src/Http/HttpContext.cpp.o: ../src/Buffe
 test/CMakeFiles/HttpRequest_test.dir/__/src/Http/HttpContext.cpp.o: ../src/Http/HttpContext.cpp
 test/CMakeFiles/HttpRequest_test.dir/__/src/Http/HttpContext.cpp.o: ../src/Http/HttpContext.h
 test/CMakeFiles/HttpRequest_test.dir/__/src/Http/HttpContext.cpp.o: ../src/Http/HttpRequest.h
+test/CMakeFiles/HttpRequest_test.dir/__/src/Http/HttpContext.cpp.o: ../src/Http/HttpResponse.h
+
+test/CMakeFiles/HttpRequest_test.dir/__/src/Http/HttpResponse.cpp.o: ../src/Buffer/Buffer.h
+test/CMakeFiles/HttpRequest_test.dir/__/src/Http/HttpResponse.cpp.o: ../src/Http/HttpResponse.cpp
+test/CMakeFiles/HttpRequest_test.dir/__/src/Http/HttpResponse.cpp.o: ../src/Http/HttpResponse.h
 

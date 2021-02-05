@@ -2,6 +2,8 @@
 #define __HTTPRESPONSE_H__
 #include <map>
 #include <string>
+#include <sys/stat.h>
+#include <sys/mman.h>
 
 namespace sing
 {
@@ -12,6 +14,8 @@ class HttpResponse
 {
 public:
     static const int TIMEOUT = 500;
+    static const std::map<int, std::string> statusCode2Message;
+    static const std::map<std::string, std::string> suffix2Type;
     enum HttpStatusCode
     {
         Unknown,
@@ -22,9 +26,9 @@ public:
         Code404_NotFound = 404
     };
 
-    HttpResponse(bool close) :closeConn(close),code(Unknown){}
+    HttpResponse() :closeConn(false),code(Unknown),mmFile(nullptr),mmFileStat({0}){}
     
-    ~HttpResponse(){}
+    ~HttpResponse();
 
     void setStatusCode(HttpStatusCode code){this->code = code;}
 
@@ -41,6 +45,21 @@ public:
     void setBody(const string& bd){body = bd;}
 
     void appendToBuffer(Buffer* output) const;
+
+    void makeResponse(HttpStatusCode code, bool close);
+
+    //provide file_ptr to write file to fd without appending buffer
+    char* getFile();
+    size_t getFileSize() const;
+
+    void setFilePath(const string& srcDir, const string& path){ this->srcDir = srcDir; this->path = path;}
+
+private:
+    string getFileType();
+
+    void unmapFile();
+
+    void makeErrorResponse(const std::string& msg);
     
 private:
     bool closeConn;//if true, then set keep alive
@@ -48,6 +67,11 @@ private:
     HttpStatusCode code;
     string statusMessage;
     string body;
+    
+    string srcDir;
+    string path;
+    char* mmFile;
+    struct stat mmFileStat;
 };
 
 }

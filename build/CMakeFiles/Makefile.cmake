@@ -56,5 +56,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "test/CMakeFiles/Threadpool_test.dir/DependInfo.cmake"
   "test/CMakeFiles/Buffer_test.dir/DependInfo.cmake"
   "test/CMakeFiles/Timer_test.dir/DependInfo.cmake"
+  "test/CMakeFiles/Response_test.dir/DependInfo.cmake"
   "test/CMakeFiles/HttpRequest_test.dir/DependInfo.cmake"
   )

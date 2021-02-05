@@ -7,6 +7,7 @@ test/CMakeFiles/HttpRequest_test.dir/HttpRequest_test.cpp.o
  /home/pc/wws/SingHttpServer/src/Buffer/Buffer.h
  /home/pc/wws/SingHttpServer/src/Http/HttpContext.h
  /home/pc/wws/SingHttpServer/src/Http/HttpRequest.h
+ /home/pc/wws/SingHttpServer/src/Http/HttpResponse.h
  /home/pc/wws/SingHttpServer/test/HttpRequest_test.cpp
 test/CMakeFiles/HttpRequest_test.dir/__/src/Buffer/Buffer.cpp.o
  /home/pc/wws/SingHttpServer/src/Buffer/Buffer.cpp
@@ -16,3 +17,8 @@ test/CMakeFiles/HttpRequest_test.dir/__/src/Http/HttpContext.cpp.o
  /home/pc/wws/SingHttpServer/src/Http/HttpContext.cpp
  /home/pc/wws/SingHttpServer/src/Http/HttpContext.h
  /home/pc/wws/SingHttpServer/src/Http/HttpRequest.h
+ /home/pc/wws/SingHttpServer/src/Http/HttpResponse.h
+test/CMakeFiles/HttpRequest_test.dir/__/src/Http/HttpResponse.cpp.o
+ /home/pc/wws/SingHttpServer/src/Buffer/Buffer.h
+ /home/pc/wws/SingHttpServer/src/Http/HttpResponse.cpp
+ /home/pc/wws/SingHttpServer/src/Http/HttpResponse.h

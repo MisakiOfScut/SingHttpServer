@@ -30,18 +30,21 @@ public:
     void setFd(int fd){ assert(fd>=0); this->fd = fd; }
     Buffer& getInput(){ return input; }
     Buffer& getOutput(){ return output; }
-    HttpRequest& getRequest(){ return request;}
+    HttpRequest& getRequest(){ return request; }
+    HttpResponse& getResponse(){ return response; }
 
     int read(int *savedErrno){ return input.readFd(fd,savedErrno);}
-    int write(int *savedErrno){ return output.writeFd(fd,savedErrno);}//FIX ME: can a file write to socket without buffer
+    int write(int *savedErrno){ return output.writeFd(fd,savedErrno);}
+    int write(char* file, size_t filesize, int* savedErrn);
 
     void reset();
-    void setWorking() { working = true; }
-    void setNoWorking() { working = false; }
-    bool isWorking() const { return working; }
+    bool keepAlive(){ return request.keepAlive(); }
+    // void setWorking() { working = true; }
+    // void setNoWorking() { working = false; }
+    // bool isWorking() const { return working; }
 
 
-    HttpContext(int);
+    explicit HttpContext(int fd);
     ~HttpContext();
 
 private:
@@ -54,7 +57,7 @@ private:
     Buffer output;
     HttpRequestParseState state;
     HttpRequest request;
-    //HttpResponse response;
+    HttpResponse response;
 };
 
 

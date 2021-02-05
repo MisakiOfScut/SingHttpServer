@@ -74,3 +74,12 @@ void TimerManager::tick(){
         delete t;
     }
 }
+
+TimerManager::~TimerManager(){
+    for(auto it : map)//STL容器只会删除ptr，ptr指向的对象需要手动销毁，否则会内存不会释放
+    {
+        delete it.second;
+        it.second = NULL;
+    }
+    map.clear();
+}

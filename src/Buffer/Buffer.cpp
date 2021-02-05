@@ -1,5 +1,6 @@
 #include "Buffer.h"
 #include <bits/types/struct_iovec.h>
+#include <sys/uio.h>
 #include <errno.h>
 #include <unistd.h>
 using namespace sing;
@@ -9,12 +10,15 @@ ssize_t Buffer::readFd(int fd, int *savedErrno){
     char extrabuff[65536];//在栈区开辟一个新buf确保一次可以读完所有数据
     struct iovec vec[2];
     const size_t writable = writableBytes();
-    vec[0].iov_base = __begin() + readIndex;
+    vec[0].iov_base = __begin() + writeIndex;
     vec[0].iov_len = writable;
     vec[1].iov_base = extrabuff;
     vec[1].iov_len = sizeof(extrabuff);
-    const ssize_t n = read( fd, vec, writable);
-    if(n<=0){
+    // when there is enough space in this buffer, don't read into extrabuf.
+    // when extrabuf is used, we read 128k-1 bytes at most.
+    const int iovcnt = (writable < sizeof extrabuff) ? 2 : 1;
+    const ssize_t n = readv(fd, vec, iovcnt);
+    if(n<0){
         *savedErrno = errno;
     }else if (static_cast<size_t>(n)<=writable){
         writeIndex += n;
@@ -40,4 +44,38 @@ ssize_t Buffer::writeFd(int fd, int *savedErrno){
         readIndex += n;
     }
     return n;
+}
+
+//write buffer and an extra char* to fd
+ssize_t Buffer::writeFd(int fd, char* base, size_t len, int* savedErrno){
+    struct iovec vec[2];
+    vec[0].iov_base = __begin() + readIndex;
+    vec[0].iov_len = readableBytes();
+    vec[1].iov_base = base;
+    vec[1].iov_len = len;
+    
+    do{
+        ssize_t n = writev(fd, vec, 2);
+
+        if(n<0){
+            *savedErrno = errno;
+            return -1;
+        }
+        if(vec[0].iov_len+vec[1].iov_len==n){//write all
+            return n;
+        }
+        else if(static_cast<size_t>(len) > vec[0].iov_len){//write all buf but not extra all
+            vec[1].iov_base = (uint8_t *)vec[1].iov_base + (len - vec[0].iov_len);
+            vec[1].iov_len -= len - vec[0].iov_len;
+            if(vec[0].iov_len){
+                retrieveAll();
+                vec[0].iov_len = 0;
+            }
+        }
+        else{//just write part of buff
+            vec[0].iov_base = (uint8_t *)vec[0].iov_base + len;
+            vec[0].iov_len -= len;
+            retrieveUntil(len + peek());
+        }
+    }while(vec[0].iov_len + vec[1].iov_len > 10240);// > 10k
 }

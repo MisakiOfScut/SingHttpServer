@@ -19,15 +19,17 @@ using TimerQueue = std::priority_queue<Timer*, std::vector<Timer*>, cmp>;
 class TimerManager
 {
 public:
-    void addTimer(int, int,const std::function<void()>&);
-    void delTimer(int);
-    void updTimer(int,int);
+    void addTimer(int fd, int timeout, const std::function<void()>& callback);
+    void delTimer(int fd);
+    void updTimer(int fd,int timeout);
     void tick();//handle expire timers
     int getNextTimeout();
+    ~TimerManager(); 
 
 private:
     TimerQueue timerQueue;
-    std::unordered_map<int, Timer*> map;//hashmap(fd, timer)
+    //hashmap(fd, timer)
+    std::unordered_map<int, Timer*> map;//FIX ME : use unique_ptr
 };
 
 }

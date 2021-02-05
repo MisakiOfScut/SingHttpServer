@@ -138,6 +138,7 @@ public:
 
     ssize_t readFd(int fd, int* savedErrno); // 从套接字读到缓冲区
     ssize_t writeFd(int fd, int* savedErrno); // 缓冲区写到套接字
+    ssize_t writeFd(int fd, char* base, size_t len, int* savedErrno);
 
 private:
     // 返回缓冲区头指针

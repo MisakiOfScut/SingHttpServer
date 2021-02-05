@@ -196,6 +196,19 @@ Timer_test/fast:
 .PHONY : Timer_test/fast
 
 #=============================================================================
+# Target rules for targets named Response_test
+
+# Build rule for target.
+Response_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Response_test
+.PHONY : Response_test
+
+# fast build rule for target.
+Response_test/fast:
+	$(MAKE) -f test/CMakeFiles/Response_test.dir/build.make test/CMakeFiles/Response_test.dir/build
+.PHONY : Response_test/fast
+
+#=============================================================================
 # Target rules for targets named HttpRequest_test
 
 # Build rule for target.
@@ -250,6 +263,7 @@ help:
 	@echo "... Threadpool_test"
 	@echo "... Buffer_test"
 	@echo "... Timer_test"
+	@echo "... Response_test"
 	@echo "... HttpRequest_test"
 	@echo "... main.o"
 	@echo "... main.i"
