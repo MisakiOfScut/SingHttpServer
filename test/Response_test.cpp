@@ -47,10 +47,13 @@ TEST(Response_test, test_make200Resp){
     response->setFilePath(".",context->getRequest()->getPath());
     response->makeResponse(HttpResponse::Code200_Ok, false);
     response->appendToBuffer(context->getOutput());
+    if(response->getFileSize()>0 && response->getFile()){
+        context->getOutput()->setWriteFile(response->getFile(), response->getFileSize());
+    }
 
     int total = context->getOutput()->readableBytes();
 
     int saveErrno;
-    int ret = context->write(response->getFile(),response->getFileSize(), &saveErrno);
+    int ret = context->writev(&saveErrno);
     ASSERT_EQ(total + response->getFileSize(), ret);
 }

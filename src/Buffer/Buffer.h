@@ -7,6 +7,7 @@
 #include <assert.h>
 #include <string.h>
 #include <sys/types.h>
+#include <sys/uio.h>
 
 namespace sing {
 
@@ -138,7 +139,12 @@ public:
 
     ssize_t readFd(int fd, int* savedErrno); // 从套接字读到缓冲区
     ssize_t writeFd(int fd, int* savedErrno); // 缓冲区写到套接字
-    ssize_t writeFd(int fd, char* base, size_t len, int* savedErrno);
+
+    ssize_t writeFd(int fd, int* savedErrno, bool& writeAll);
+    void setWriteFile(char* file, size_t filelen){//call once
+        iov[1].iov_base = file; iov[1].iov_len = filelen;
+    }
+    bool writeAllFile(){ return readableBytes() + iov[1].iov_len ==0; }
 
 private:
     // 返回缓冲区头指针
@@ -171,6 +177,8 @@ private:
     size_t writeIndex;
     size_t readIndex;
     std::vector<char> buffer;
+
+    struct iovec iov[2];
 };
 
 }

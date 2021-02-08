@@ -31,7 +31,9 @@ const std::map<std::string, std::string> HttpResponse::suffix2Type = {
     {".gz", "application/x-gzip"},
     {".tar", "application/x-tar"},
     {".css", "text/css"},
-    {".md", "text/plain"}
+    {".md", "text/plain"},
+    {".mp4", "video/mpeg4"},
+    {".mp3","audio/mp3"}
 };
 
 /*
@@ -82,6 +84,7 @@ void HttpResponse::makeResponse(HttpStatusCode code, bool close){
 
     //----------------do static request---------------------//
     if(!path.empty()){
+        path = path=="/"?"/index.html":path;
         /* 判断请求的资源文件 */
         if(stat((srcDir + path).data(), &mmFileStat) < 0 || S_ISDIR(mmFileStat.st_mode)) {
             setStatusCode(Code404_NotFound);

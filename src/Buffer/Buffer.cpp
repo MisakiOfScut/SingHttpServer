@@ -1,6 +1,4 @@
 #include "Buffer.h"
-#include <bits/types/struct_iovec.h>
-#include <sys/uio.h>
 #include <errno.h>
 #include <unistd.h>
 using namespace sing;
@@ -30,52 +28,48 @@ ssize_t Buffer::readFd(int fd, int *savedErrno){
 }
 
 //将buf的数据写入fd
-ssize_t Buffer::writeFd(int fd, int *savedErrno){
-    const size_t readble = readableBytes();
-    const ssize_t n = write(fd, peek(), readble);
-    if(n<=0){
-        if (n<0 && n==EINTR){
-            return 0;
-        }else{
-            *savedErrno = errno;
-            return -1;
-        }
-    }else {
-        readIndex += n;
-    }
-    return n;
-}
+// ssize_t Buffer::writeFd(int fd, int *savedErrno){
+//     const size_t readble = readableBytes();
+//     const ssize_t n = write(fd, peek(), readble);
+//     if(n<=0){
+//         if (n<0 && n==EINTR){
+//             return 0;
+//         }else{
+//             *savedErrno = errno;
+//             return -1;
+//         }
+//     }else {
+//         readIndex += n;
+//     }
+//     return n;
+// }
 
 //write buffer and an extra char* to fd
-ssize_t Buffer::writeFd(int fd, char* base, size_t len, int* savedErrno){
-    struct iovec vec[2];
-    vec[0].iov_base = __begin() + readIndex;
-    vec[0].iov_len = readableBytes();
-    vec[1].iov_base = base;
-    vec[1].iov_len = len;
-    
-    do{
-        ssize_t n = writev(fd, vec, 2);
+ssize_t Buffer::writeFd(int fd, int* savedErrno){
+    iov[0].iov_base = __begin() + readIndex;
+    iov[0].iov_len = readableBytes();
 
-        if(n<0){
+    ssize_t n = -1;
+    do{
+        n = writev(fd, iov, 2);
+        if(n<=0){
             *savedErrno = errno;
-            return -1;
+            break;
         }
-        if(vec[0].iov_len+vec[1].iov_len==n){//write all
-            return n;
-        }
-        else if(static_cast<size_t>(len) > vec[0].iov_len){//write all buf but not extra all
-            vec[1].iov_base = (uint8_t *)vec[1].iov_base + (len - vec[0].iov_len);
-            vec[1].iov_len -= len - vec[0].iov_len;
-            if(vec[0].iov_len){
+        else if(static_cast<size_t>(n) > iov[0].iov_len){//write all buf but not extra all
+            iov[1].iov_base = (uint8_t *)iov[1].iov_base + (n - iov[0].iov_len);
+            iov[1].iov_len -= (n - iov[0].iov_len);
+            if(iov[0].iov_len){
                 retrieveAll();
-                vec[0].iov_len = 0;
+                iov[0].iov_len = 0;
             }
         }
         else{//just write part of buff
-            vec[0].iov_base = (uint8_t *)vec[0].iov_base + len;
-            vec[0].iov_len -= len;
-            retrieveUntil(len + peek());
+            iov[0].iov_base = (uint8_t *)iov[0].iov_base + n;
+            iov[0].iov_len -= n;
+            retrieveUntil(n + peek());
         }
-    }while(vec[0].iov_len + vec[1].iov_len > 10240);// > 10k
+    }while(iov[0].iov_len+iov[1].iov_len > 0);//循环写让writev触发-1，EAGAIN；然后设置EPOLLOUT!!!
+
+    return n;
 }

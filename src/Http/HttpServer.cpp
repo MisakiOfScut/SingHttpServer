@@ -105,17 +105,18 @@ void HttpServer::doRequest(HttpContext* context){
         return;
     }
 
+    HttpResponse* response = context->getResponse();
     if(!context->parseRequest()){//parse reqst, close conn if err
-        HttpResponse* response = context->getResponse();
         response->makeResponse(HttpResponse::Code400_BadRequest, true);
         response->appendToBuffer(context->getOutput());
-    }
-
-    if(context->parseFinsh()){
-        HttpResponse* response = context->getResponse();
+    }else if(context->parseFinsh()){
         response->setFilePath(srcDir, context->getRequest()->getPath());
         response->makeResponse(HttpResponse::Code200_Ok, false);
         response->appendToBuffer(context->getOutput());
+    }
+
+    if(response->getFileSize()>0 && response->getFile()){
+        context->getOutput()->setWriteFile(response->getFile(), response->getFileSize());
     }
     epoller->modFd(context->getFd(), context, (EPOLLOUT | EPOLLONESHOT));
 }
@@ -124,15 +125,12 @@ void HttpServer::doRequest(HttpContext* context){
 void HttpServer::doResponse(HttpContext* context){
     assert(context!=NULL);
     int fd = context->getFd();
-    int writeErrno;int ret;
     HttpResponse* response = context->getResponse();
-    
-    if(response->getFileSize()>0 && response->getFile()){
-        ret = context->write(response->getFile(), response->getFileSize(),&writeErrno);
-    }else{
-        ret = context->write(&writeErrno);
-    }
-    if(context->getOutput()->readableBytes()==0){
+
+    int writeErrno;
+    int ret = context->writev(&writeErrno);
+
+    if(context->getOutput()->writeAllFile()){
         if(context->keepAlive()){
             context->reset();
             epoller->modFd(fd, context, (EPOLLIN | EPOLLONESHOT));

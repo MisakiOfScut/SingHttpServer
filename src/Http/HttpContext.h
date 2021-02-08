@@ -35,7 +35,7 @@ public:
 
     int read(int *savedErrno){ return input.readFd(fd,savedErrno);}
     int write(int *savedErrno){ return output.writeFd(fd,savedErrno);}
-    int write(char* file, size_t filesize, int* savedErrn);
+    int writev(int* savedErrno);
 
     void reset();
     bool keepAlive(){ return request.keepAlive(); }

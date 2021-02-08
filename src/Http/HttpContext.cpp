@@ -104,10 +104,11 @@ void HttpContext::reset(){
     state = REQUEST_LINE;
     input.retrieveAll();
     output.retrieveAll();
+    output.setWriteFile(NULL, 0);
     request.reset();
     response.reset();
 }
 
-int HttpContext::write(char* file, size_t filesize, int* savedErrno){
-    return output.writeFd(fd, file, filesize, savedErrno);
+int HttpContext::writev(int* savedErrno){
+    return output.writeFd(fd, savedErrno);
 }

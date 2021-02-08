@@ -9,10 +9,6 @@
 /home/pc/wws/SingHttpServer/src/Buffer/Buffer.cpp
 Buffer.h
 /home/pc/wws/SingHttpServer/src/Buffer/Buffer.h
-bits/types/struct_iovec.h
--
-sys/uio.h
--
 errno.h
 -
 unistd.h
@@ -30,6 +26,8 @@ assert.h
 string.h
 -
 sys/types.h
+-
+sys/uio.h
 -
 
 /home/pc/wws/SingHttpServer/test/Buffer_test.cpp

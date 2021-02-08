@@ -14,22 +14,22 @@ void TimerManager::addTimer(int fd, int timeout, const std::function<void()>& ca
 
     }else//when timer is existed
     {
-        t = map[fd];
+        t = map.at(fd);
         assert(t!=nullptr);
         t->reset(timeout, callback);
     }
 }
 
 void TimerManager::updTimer(int fd, int timeout){
-    Timer* t = map[fd];
+    Timer* t = map.at(fd);
     assert(t!=nullptr);
     t->reset(timeout);
 }
 
 //use lazy delete a timer
 void TimerManager::delTimer(int fd){
-    if(map.count(fd)>0){
-        Timer* t = map[fd];
+    if(map.find(fd)!=map.end()){
+        Timer* t = map.at(fd);
         t->del();//just set the callback NULL
     }
 }
@@ -44,6 +44,7 @@ int TimerManager::getNextTimeout(){
             timerQueue.pop();
             map.erase(t->getFd());
             delete t;
+            t = NULL;
             continue;
         }
         res = std::chrono::duration_cast<MS>(t->getExpireTime() - Clock::now()).count();
@@ -62,6 +63,7 @@ void TimerManager::tick(){
             timerQueue.pop();
             map.erase(t->getFd());
             delete t;
+            t=NULL;
             continue;
         }
 
@@ -74,6 +76,7 @@ void TimerManager::tick(){
         timerQueue.pop();
         map.erase(t->getFd());
         delete t;
+        t=NULL;
     }
 }
 
