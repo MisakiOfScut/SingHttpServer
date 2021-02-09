@@ -50,11 +50,11 @@ ssize_t Buffer::writeFd(int fd, int* savedErrno){
     iov[0].iov_len = readableBytes();
 
     ssize_t n = -1;
-    do{
+    //do{
         n = writev(fd, iov, 2);
         if(n<=0){
             *savedErrno = errno;
-            break;
+            //break;
         }
         else if(static_cast<size_t>(n) > iov[0].iov_len){//write all buf but not extra all
             iov[1].iov_base = (uint8_t *)iov[1].iov_base + (n - iov[0].iov_len);
@@ -69,7 +69,7 @@ ssize_t Buffer::writeFd(int fd, int* savedErrno){
             iov[0].iov_len -= n;
             retrieveUntil(n + peek());
         }
-    }while(iov[0].iov_len+iov[1].iov_len > 0);//循环写让writev触发-1，EAGAIN；然后设置EPOLLOUT!!!
+    //}while(iov[0].iov_len+iov[1].iov_len > 0);//循环写让writev触发-1，EAGAIN；然后设置EPOLLOUT!!!
 
     return n;
 }

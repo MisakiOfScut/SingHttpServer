@@ -138,11 +138,14 @@ void HttpServer::doResponse(HttpContext* context){
             return;
         }
     }
-    else if(ret<0){
-        if(writeErrno==EAGAIN){
-            epoller->modFd(fd, context, (EPOLLOUT | EPOLLONESHOT));
-            return;
-        }
+    else {
+    //else if(ret<0)
+        // if(writeErrno==EAGAIN){
+        //     epoller->modFd(fd, context, (EPOLLOUT | EPOLLONESHOT));
+        //     return;
+        // }
+        epoller->modFd(fd, context, (EPOLLOUT | EPOLLONESHOT));
+        return;
     }
     closeConnection(context);
 }
