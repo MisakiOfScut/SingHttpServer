@@ -1,1 +1,0 @@
-/usr/bin/x86_64-linux-gnu-g++-7  -g  -rdynamic CMakeFiles/Timer_test.dir/Timer_test.cpp.o CMakeFiles/Timer_test.dir/__/src/Timer/TimerManager.cpp.o CMakeFiles/Timer_test.dir/GTestAll.cpp.o  -o Timer_test /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a -lpthread 

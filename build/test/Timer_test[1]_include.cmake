@@ -1,5 +1,0 @@
-if(EXISTS "/home/pc/wws/SingHttpServer/build/test/Timer_test[1]_tests.cmake")
-  include("/home/pc/wws/SingHttpServer/build/test/Timer_test[1]_tests.cmake")
-else()
-  add_test(Timer_test_NOT_BUILT Timer_test_NOT_BUILT)
-endif()
