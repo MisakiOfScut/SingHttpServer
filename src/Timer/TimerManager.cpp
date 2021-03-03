@@ -40,7 +40,7 @@ int TimerManager::getNextTimeout(){
     {
         Timer* t = timerQueue.top();
         assert(t!=nullptr);
-        if(t->isDel()){
+        if(t->isDel()){//function对象不可调用说明该定时器已经被删除
             timerQueue.pop();
             map.erase(t->getFd());
             delete t;

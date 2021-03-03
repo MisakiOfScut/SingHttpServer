@@ -26,10 +26,10 @@ public:
         this->expireTime = Clock::now()+MS(timeout);
         this->callback = callback;
     }
-    void del(){ this->callback = NULL; }
-    bool isDel(){ return callback==NULL?true:false; }
+    void del(){ this->callback = nullptr; }//clearing assignment
+    bool isDel(){ return callback ? true:false; }//check if callable
     int getFd(){ return fd; }
-    void exec(){ //执行定时任务，不需要判空空函数不会异常
+    void exec(){ //执行定时任务，必须先检查是否可调用
         callback(); 
     };
 
