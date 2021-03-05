@@ -1,0 +1,65 @@
+Date : 2021-03-03 17:39:54
+Directory : d:\some files\cpp\SingHttpServer
+Total : 29 files,  1640 codes, 135 comments, 307 blanks, all 2082 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C++      |         23 |      1,410 |        132 |        248 |      1,790 |
+| HTML     |          3 |        165 |          2 |         27 |        194 |
+| Markdown |          2 |         43 |          0 |         30 |         73 |
+| CSS      |          1 |         22 |          1 |          2 |         25 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                         | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                            |         29 |      1,640 |        135 |        307 |      2,082 |
+| docs                                                         |          1 |         33 |          0 |         26 |         59 |
+| src                                                          |         15 |      1,109 |        111 |        200 |      1,420 |
+| src\Buffer                                                   |          2 |        182 |         38 |         42 |        262 |
+| src\Epoll                                                    |          2 |         69 |          0 |         15 |         84 |
+| src\Http                                                     |          7 |        640 |         37 |        111 |        788 |
+| src\ThreadPool                                               |          1 |         73 |         20 |         10 |        103 |
+| src\Timer                                                    |          3 |        145 |         16 |         22 |        183 |
+| test                                                         |          7 |        294 |         21 |         45 |        360 |
+| webapps                                                      |          4 |        187 |          3 |         29 |        219 |
++--------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                     | language | code       | comment    | blank      | total      |
++--------------------------------------------------------------+----------+------------+------------+------------+------------+
+| d:\some files\cpp\SingHttpServer\README.md                   | Markdown |         10 |          0 |          4 |         14 |
+| d:\some files\cpp\SingHttpServer\docs\intro.md               | Markdown |         33 |          0 |         26 |         59 |
+| d:\some files\cpp\SingHttpServer\main.cpp                    | C++      |          7 |          0 |          3 |         10 |
+| d:\some files\cpp\SingHttpServer\src\Buffer\Buffer.cpp       | C++      |         47 |         23 |          5 |         75 |
+| d:\some files\cpp\SingHttpServer\src\Buffer\Buffer.h         | C++      |        135 |         15 |         37 |        187 |
+| d:\some files\cpp\SingHttpServer\src\Epoll\Epoll.cpp         | C++      |         40 |          0 |          8 |         48 |
+| d:\some files\cpp\SingHttpServer\src\Epoll\Epoll.h           | C++      |         29 |          0 |          7 |         36 |
+| d:\some files\cpp\SingHttpServer\src\Http\HttpContext.cpp    | C++      |         99 |          2 |         13 |        114 |
+| d:\some files\cpp\SingHttpServer\src\Http\HttpContext.h      | C++      |         45 |          8 |         13 |         66 |
+| d:\some files\cpp\SingHttpServer\src\Http\HttpRequest.h      | C++      |        107 |          2 |         15 |        124 |
+| d:\some files\cpp\SingHttpServer\src\Http\HttpResponse.cpp   | C++      |        142 |         13 |         16 |        171 |
+| d:\some files\cpp\SingHttpServer\src\Http\HttpResponse.h     | C++      |         57 |          1 |         23 |         81 |
+| d:\some files\cpp\SingHttpServer\src\Http\HttpServer.cpp     | C++      |        156 |         11 |         24 |        191 |
+| d:\some files\cpp\SingHttpServer\src\Http\HttpServer.h       | C++      |         34 |          0 |          7 |         41 |
+| d:\some files\cpp\SingHttpServer\src\ThreadPool\ThreadPool.h | C++      |         73 |         20 |         10 |        103 |
+| d:\some files\cpp\SingHttpServer\src\Timer\Timer.h           | C++      |         38 |          1 |          6 |         45 |
+| d:\some files\cpp\SingHttpServer\src\Timer\TimerManager.cpp  | C++      |         77 |          3 |         10 |         90 |
+| d:\some files\cpp\SingHttpServer\src\Timer\TimerManager.h    | C++      |         30 |         12 |          6 |         48 |
+| d:\some files\cpp\SingHttpServer\test\Buffer_test.cpp        | C++      |         66 |         15 |         13 |         94 |
+| d:\some files\cpp\SingHttpServer\test\GTestAll.cpp           | C++      |          8 |          1 |          0 |          9 |
+| d:\some files\cpp\SingHttpServer\test\HttpRequest_test.cpp   | C++      |         60 |          0 |          8 |         68 |
+| d:\some files\cpp\SingHttpServer\test\Response_test.cpp      | C++      |         49 |          1 |          9 |         59 |
+| d:\some files\cpp\SingHttpServer\test\Server_test.cpp        | C++      |         25 |          4 |          5 |         34 |
+| d:\some files\cpp\SingHttpServer\test\Threadpool_test.cpp    | C++      |         37 |          0 |          2 |         39 |
+| d:\some files\cpp\SingHttpServer\test\Timer_test.cpp         | C++      |         49 |          0 |          8 |         57 |
+| d:\some files\cpp\SingHttpServer\webapps\index.html          | HTML     |         11 |          0 |          1 |         12 |
+| d:\some files\cpp\SingHttpServer\webapps\kp.css              | CSS      |         22 |          1 |          2 |         25 |
+| d:\some files\cpp\SingHttpServer\webapps\kp.html             | HTML     |        139 |          2 |         26 |        167 |
+| d:\some files\cpp\SingHttpServer\webapps\video.html          | HTML     |         15 |          0 |          0 |         15 |
+| Total                                                        |          |      1,640 |        135 |        307 |      2,082 |
++--------------------------------------------------------------+----------+------------+------------+------------+------------+
