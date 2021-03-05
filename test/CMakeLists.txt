@@ -6,7 +6,7 @@ include(GoogleTest)
 
 add_executable(Buffer_test ../src/Buffer/Buffer.cpp Buffer_test.cpp GTestAll.cpp)
 add_executable(Threadpool_test Threadpool_test.cpp GTestAll.cpp)
-add_executable(Timer_test Timer_test.cpp ../src/Timer/TimerManager.cpp GTestAll.cpp)
+add_executable(Timer_test Timer_test.cpp ../src/Timer/TimerManager.cpp ../src/Http/HttpContext.cpp ../src/Http/HttpResponse.cpp ../src/Buffer/Buffer.cpp GTestAll.cpp)
 add_executable(HttpRequest_test ../src/Http/HttpContext.cpp ../src/Http/HttpResponse.cpp ../src/Buffer/Buffer.cpp HttpRequest_test.cpp GTestAll.cpp)
 add_executable(Response_test ../src/Http/HttpContext.cpp ../src/Http/HttpResponse.cpp ../src/Buffer/Buffer.cpp Response_test.cpp GTestAll.cpp)
 add_executable(Server_test ../src/Http/HttpContext.cpp ../src/Http/HttpResponse.cpp ../src/Http/HttpServer.cpp

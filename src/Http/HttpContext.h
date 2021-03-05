@@ -3,10 +3,12 @@
 #include "HttpRequest.h"
 #include "HttpResponse.h"
 #include "../Buffer/Buffer.h"
+#include "../Timer/Timer.h"
+#include <memory>
 
 namespace sing
 {
-
+class Timer;
 class HttpContext
 {
 public:
@@ -43,6 +45,16 @@ public:
     // void setNoWorking() { working = false; }
     // bool isWorking() const { return working; }
 
+    void setTimer(Sha_Timer timer){ 
+        this->timer = timer; 
+    }
+    void clearTimer(){ 
+        Sha_Timer sht = timer.lock();
+        if(sht){
+            sht->del();
+            timer.reset();
+        }
+    }
 
     explicit HttpContext(int fd);
     ~HttpContext();
@@ -58,6 +70,7 @@ private:
     HttpRequestParseState state;
     HttpRequest request;
     HttpResponse response;
+    std::weak_ptr<Timer> timer;
 };
 
 

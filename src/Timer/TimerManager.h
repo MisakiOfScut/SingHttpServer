@@ -1,6 +1,7 @@
 #ifndef __TIMERMANAGER_H__
 #define __TIMERMANAGER_H__
 #include "Timer.h"
+#include "../Http/HttpContext.h"
 #include <queue>
 #include <unordered_map>
 #include <assert.h>
@@ -9,19 +10,20 @@ namespace sing{
 
 struct cmp
 {
-    bool operator() (Timer* a, Timer* b){
-        assert(a!=nullptr && b!=nullptr);
+    bool operator() (Sha_Timer &a, Sha_Timer &b)const{
         return (a->getExpireTime()) > (b->getExpireTime());
     }
 };
-using TimerQueue = std::priority_queue<Timer*, std::vector<Timer*>, cmp>;
+using TimerQueue = std::priority_queue<Sha_Timer, std::deque<Sha_Timer>, cmp>;
+
+class HttpContext;
 
 class TimerManager
 {
 public:
-    void addTimer(int fd, int timeout, const std::function<void()>& callback);
-    void delTimer(int fd);
-    void updTimer(int fd,int timeout);
+    void addTimer(HttpContext* context, int timeout, const std::function<void()>& callback);
+    //void delTimer(HttpContext* context);
+    //void updTimer(HttpContext* context,int timeout);
     void tick();//handle expire timers
     int getNextTimeout();
     ~TimerManager(); 
@@ -29,7 +31,7 @@ public:
 private:
     TimerQueue timerQueue;
     //hashmap(fd, timer)
-    std::unordered_map<int, Timer*> map;//FIX ME : use unique_ptr
+    //std::unordered_map<int, Timer*> map;//FIX ME : use unique_ptr
 };
 
 }

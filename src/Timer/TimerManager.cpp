@@ -1,50 +1,37 @@
 #include "TimerManager.h"
 using namespace sing;
 
-void TimerManager::addTimer(int fd, int timeout, const std::function<void()>& callback){
-    assert(fd>=0);
-    Timer *t;
-    if (map.count(fd)==0)
-    {
-        /*dev: if callback is NULL, it's it still meaningful to keep its timer?*/
-
-        t = new Timer(fd, Clock::now()+MS(timeout), callback);
-        timerQueue.push(t);
-        map[fd] = t;
-
-    }else//when timer is existed
-    {
-        t = map.at(fd);
-        assert(t!=nullptr);
-        t->reset(timeout, callback);
-    }
+void TimerManager::addTimer(HttpContext* context, int timeout, const std::function<void()>& callback){
+    assert(context!=nullptr);
+    Sha_Timer timer = std::make_shared<Timer>(Clock::now()+MS(timeout),callback);
+    timerQueue.push(timer);
+    context->clearTimer();
+    context->setTimer(timer);
 }
 
-void TimerManager::updTimer(int fd, int timeout){
-    Timer* t = map.at(fd);
-    assert(t!=nullptr);
-    t->reset(timeout);
-}
+// void TimerManager::updTimer(HttpContext* context, int timeout){
+//     assert(context!=nullptr);
+//     if(context-> getTimer() != nullptr){
+//         context->getTimer()->reset(timeout);
+//     }
+// }
 
-//use lazy delete a timer
-void TimerManager::delTimer(int fd){
-    if(map.find(fd)!=map.end()){
-        Timer* t = map.at(fd);
-        t->del();//just set the callback NULL
-    }
-}
+// //use lazy delete a timer
+// void TimerManager::delTimer(HttpContext* context){
+//     assert(context!=nullptr);
+//     if(context-> getTimer() != nullptr){
+//         context->getTimer()->del();
+//     }
+// }
 
 int TimerManager::getNextTimeout(){
     int res = -1;//-1 means no timeout
     while (!timerQueue.empty())
     {
-        Timer* t = timerQueue.top();
+        Sha_Timer t = timerQueue.top();
         assert(t!=nullptr);
-        if(t->isDel()){//function对象不可调用说明该定时器已经被删除
+        if(t->isDel()){
             timerQueue.pop();
-            map.erase(t->getFd());
-            delete t;
-            t = NULL;
             continue;
         }
         res = std::chrono::duration_cast<MS>(t->getExpireTime() - Clock::now()).count();
@@ -57,34 +44,28 @@ int TimerManager::getNextTimeout(){
 void TimerManager::tick(){
     while (!timerQueue.empty())
     {
-        Timer* t = timerQueue.top();
+        Sha_Timer t = timerQueue.top();
         assert(t!=nullptr);
         if(t->isDel()){
             timerQueue.pop();
-            map.erase(t->getFd());
-            delete t;
-            t=NULL;
             continue;
         }
-
         //exit if top timer isn't expire
         if(std::chrono::duration_cast<MS>(t->getExpireTime() - Clock::now()).count()>0){
             break;
         }
-
         t->exec();//timeout, exec timeout work
         timerQueue.pop();
-        map.erase(t->getFd());
-        delete t;
-        t=NULL;
     }
 }
 
 TimerManager::~TimerManager(){
-    for(auto it : map)//STL容器只会删除ptr，ptr指向的对象需要手动销毁，否则会内存不会释放
-    {
-        delete it.second;
-        it.second = NULL;
-    }
-    map.clear();
+    // for(auto it : map)//STL容器只会删除ptr，ptr指向的对象需要手动销毁，否则会内存不会释放
+    // {
+    //     delete it.second;
+    //     it.second = NULL;
+    // }
+    // while (!timerQueue.empty()){
+    //     timerQueue.pop();
+    // }
 }

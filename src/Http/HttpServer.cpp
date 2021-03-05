@@ -51,9 +51,11 @@ void HttpServer::start(){
                 closeConnection(context);
             }
             else if(events & EPOLLIN){
+                timerManager->addTimer(context, timeout, std::bind(&HttpServer::closeConnection, this, context));
                 threadPool->pushTask(std::bind(&HttpServer::doRequest, this, context));
             }
             else if(events & EPOLLOUT){
+                timerManager->addTimer(context, timeout, std::bind(&HttpServer::closeConnection, this, context));
                 threadPool->pushTask(std::bind(&HttpServer::doResponse, this, context));
             }
             else{
@@ -74,23 +76,23 @@ void HttpServer::acceptConnection(){
             break;
         }
         HttpContext* context = new HttpContext(acceptFd);
-        timerManager->addTimer(acceptFd, timeout, std::bind(&HttpServer::closeConnection, this, context));
+        timerManager->addTimer(context, timeout, std::bind(&HttpServer::closeConnection, this, context));
         epoller->addFd(acceptFd, context, (EPOLLIN | EPOLLONESHOT));//EPOLLONESHOT让fd的事件只能被触发一个和一次，除非重置EPOLLONESHOT才能再次触发
     }
 }
 
 void HttpServer::closeConnection(HttpContext* context){
     int fd = context->getFd();
-    timerManager->delTimer(fd);
+    context->clearTimer();//timerManager->delTimer(context);
     epoller->delFd(fd);
     delete context;// !!!
-    context = NULL;
+    context = nullptr;
 }
 
 //recv request and parse
 void HttpServer::doRequest(HttpContext* context){
     assert(context!=NULL);
-    timerManager->delTimer(context->getFd());   
+    //context->clearTimer();//timerManager->delTimer(context);   
     int readErrno;
     int ret = context->read(&readErrno);//采取LT模式，不需要循环读完
 
@@ -100,8 +102,9 @@ void HttpServer::doRequest(HttpContext* context){
     }
     else if(ret<0 && readErrno == EAGAIN){//read would block
         epoller->modFd(context->getFd(), context, (EPOLLIN | EPOLLONESHOT));//reset fd for next readable event
-        timerManager->addTimer(context->getFd(), timeout, std::bind(&HttpServer::closeConnection, this, context));//reset timer
+        //timerManager->addTimer(context, timeout, std::bind(&HttpServer::closeConnection, this, context));//reset timer
         //--------采取先del定时器，EAGAIN再添加回去的策略，如果能一次读完的情况多则效率高，否则堆的频繁变动反而效率低------//
+        //timerManager->updTimer(context, timeout);
         return;
     }
 
@@ -126,6 +129,7 @@ void HttpServer::doResponse(HttpContext* context){
     assert(context!=NULL);
     int fd = context->getFd();
     HttpResponse* response = context->getResponse();
+    //context->clearTimer();//timerManager->delTimer(context); 
 
     int writeErrno;
     int ret = context->writev(&writeErrno);
@@ -133,8 +137,9 @@ void HttpServer::doResponse(HttpContext* context){
     if(context->getOutput()->writeAllFile()){
         if(context->keepAlive()){
             context->reset();
+            //timerManager->addTimer(context, timeout, std::bind(&HttpServer::closeConnection, this, context));
+            //timerManager->updTimer(context, timeout);
             epoller->modFd(fd, context, (EPOLLIN | EPOLLONESHOT));
-            timerManager->addTimer(fd, timeout, std::bind(&HttpServer::closeConnection, this, context));
             return;
         }
     }
@@ -144,6 +149,7 @@ void HttpServer::doResponse(HttpContext* context){
         //     epoller->modFd(fd, context, (EPOLLOUT | EPOLLONESHOT));
         //     return;
         // }
+        //timerManager->addTimer(context, timeout, std::bind(&HttpServer::closeConnection, this, context));
         epoller->modFd(fd, context, (EPOLLOUT | EPOLLONESHOT));
         return;
     }
