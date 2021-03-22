@@ -84,9 +84,14 @@ void HttpResponse::makeResponse(HttpStatusCode code, bool close){
 
     //----------------do static request---------------------//
     if(!path.empty()){
-        path = path=="/"?"/index.html":path;
+        //path = path=="/"?"/index.html":path;
+        if(path=="/"){
+            body = "Sing Welcome!";
+            addHeader("Content-length", std::to_string(body.size()));
+            addHeader("Content-type", "text/html");
+        }
         /* 判断请求的资源文件 */
-        if(stat((srcDir + path).data(), &mmFileStat) < 0 || S_ISDIR(mmFileStat.st_mode)) {
+        else if(stat((srcDir + path).data(), &mmFileStat) < 0 || S_ISDIR(mmFileStat.st_mode)) {
             setStatusCode(Code404_NotFound);
             makeErrorResponse("File Not Found");
         }

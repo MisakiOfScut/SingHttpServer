@@ -13,7 +13,7 @@ namespace sing {
 
 class Buffer{
 public:
-    static const size_t BUFFER_SIZE = 1024;
+    static const size_t BUFFER_SIZE = 4096;
     
     Buffer()
     :readIndex(0),writeIndex(0),buffer(BUFFER_SIZE){

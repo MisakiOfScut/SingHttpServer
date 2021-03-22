@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <fcntl.h>
+#include <netinet/tcp.h>
 
 using namespace sing;
 
@@ -51,11 +52,13 @@ void HttpServer::start(){
                 closeConnection(context);
             }
             else if(events & EPOLLIN){
-                timerManager->addTimer(context, timeout, std::bind(&HttpServer::closeConnection, this, context));
+                int t = context->keepAlive() ? 5*60*1000 : timeout;
+                timerManager->addTimer(context, t, std::bind(&HttpServer::closeConnection, this, context));
                 threadPool->pushTask(std::bind(&HttpServer::doRequest, this, context));
             }
             else if(events & EPOLLOUT){
-                timerManager->addTimer(context, timeout, std::bind(&HttpServer::closeConnection, this, context));
+                int t = context->keepAlive() ? 5*60*1000 : timeout;
+                timerManager->addTimer(context, t, std::bind(&HttpServer::closeConnection, this, context));
                 threadPool->pushTask(std::bind(&HttpServer::doResponse, this, context));
             }
             else{
@@ -75,6 +78,8 @@ void HttpServer::acceptConnection(){
                 std::cout << "socket accept: "<< strerror(errno) << std::endl; // FIX ME: use log
             break;
         }
+          int enable = 1;
+        setsockopt(acceptFd, IPPROTO_TCP, TCP_NODELAY, (void *)&enable, sizeof(enable));
         HttpContext* context = new HttpContext(acceptFd);
         timerManager->addTimer(context, timeout, std::bind(&HttpServer::closeConnection, this, context));
         epoller->addFd(acceptFd, context, (EPOLLIN | EPOLLONESHOT));//EPOLLONESHOT让fd的事件只能被触发一个和一次，除非重置EPOLLONESHOT才能再次触发
@@ -172,7 +177,7 @@ int HttpServer::createListenFd(){
     int ret = bind(sock, (struct sockaddr*) &address, sizeof(address));
     assert(ret!=-1);
 
-    ret = listen(sock, 1024);
+    ret = listen(sock, 2048);
     assert(ret!=-1);
 
     setNonblocking(sock);
