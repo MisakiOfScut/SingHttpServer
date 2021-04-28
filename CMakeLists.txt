@@ -7,9 +7,11 @@ enable_testing()
 add_executable(main main.cpp src/Http/HttpContext.cpp src/Http/HttpResponse.cpp src/Http/HttpServer.cpp
 src/Buffer/Buffer.cpp src/Timer/TimerManager.cpp src/Epoll/Epoll.cpp)
 
+add_compile_options(-g)
+
 target_link_libraries(main pthread)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 
-add_subdirectory(test)
+#add_subdirectory(test)

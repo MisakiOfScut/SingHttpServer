@@ -42,17 +42,15 @@ const std::map<std::string, std::string> HttpResponse::suffix2Type = {
     如果body是文件则另外append，不要通过body设置避免一次copy
 */
 void HttpResponse::appendToBuffer(Buffer* const output) const{
-    output->append("HTTP1.1 " + std::to_string(code) + " ");
-    output->append(statusMessage);
-    output->append("\r\n");
+    output->append("HTTP/1.1 " + std::to_string(code) + " "+statusMessage + "\r\n");
 
     if(closeConn){
         output->append("Connection: close\r\n");
     }else{
-        output->append("Connection: keep-Alive\r\n");
-        output->append("keep-Alive: timeout=" + std::to_string(TIMEOUT)+"\r\n");
+        output->append("Connection: Keep-Alive\r\n");
+        output->append("Keep-Alive: timeout=" + std::to_string(TIMEOUT)+"\r\n");
     }
-    //output->append("Content-Length: "+std::to_string(body.size()) + "\r\n");
+    output->append("Server: Sing/1.0\r\n");
     for (const auto& header : headers)
     {
         output->append(header.first);
@@ -84,14 +82,14 @@ void HttpResponse::makeResponse(HttpStatusCode code, bool close){
 
     //----------------do static request---------------------//
     if(!path.empty()){
-        //path = path=="/"?"/index.html":path;
-        if(path=="/"){
-            body = "Sing Welcome!";
-            addHeader("Content-length", std::to_string(body.size()));
-            addHeader("Content-type", "text/html");
-        }
+        path = path=="/"?"/index.html":path;
+        // if(path=="/"){
+        //     body = "Sing Welcome!";
+        //     addHeader("Content-length", std::to_string(body.size()));
+        //     addHeader("Content-type", "text/html");
+        // }
         /* 判断请求的资源文件 */
-        else if(stat((srcDir + path).data(), &mmFileStat) < 0 || S_ISDIR(mmFileStat.st_mode)) {
+        if(stat((srcDir + path).data(), &mmFileStat) < 0 || S_ISDIR(mmFileStat.st_mode)) {
             setStatusCode(Code404_NotFound);
             makeErrorResponse("File Not Found");
         }
@@ -115,11 +113,14 @@ void HttpResponse::makeResponse(HttpStatusCode code, bool close){
                 mmFile = static_cast<char*>(mmRet);
                 ::close(srcFd);
 
-                addHeader("Content-length", std::to_string(mmFileStat.st_size));
-                addHeader("Content-type", getFileType());
+                addHeader("Content-Type", getFileType());
+                addHeader("Content-Length", std::to_string(mmFileStat.st_size));
             }
         }
     }
+
+    setStatusMessage(statusCode2Message.at(this->code));
+
 }
 
 void HttpResponse::makeErrorResponse(const std::string& msg){//FIX ME: send error page html file
@@ -128,8 +129,8 @@ void HttpResponse::makeErrorResponse(const std::string& msg){//FIX ME: send erro
     body += std::to_string(this->code) + " : " + statusCode2Message.at(code) + "\n";
     body += "<p>" + msg + "</p>";
     body += "<hr><em>sing web server</em></body></html>";
-    addHeader("Content-length", std::to_string(body.size()));
-    addHeader("Content-type", "text/html");
+    addHeader("Content-Type", "text/html");
+    addHeader("Content-Length", std::to_string(body.size()));
 }
 
 //判断文件类型

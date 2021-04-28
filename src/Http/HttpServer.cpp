@@ -10,7 +10,7 @@
 #include <arpa/inet.h>
 #include <fcntl.h>
 #include <netinet/tcp.h>
-
+#include <syslog.h>
 using namespace sing;
 
 const std::string HttpServer::srcDir = "../webapps";//与exec文件同级
@@ -62,7 +62,7 @@ void HttpServer::start(){
                 threadPool->pushTask(std::bind(&HttpServer::doResponse, this, context));
             }
             else{
-                std::cout << "Epoll: Unexpected event" << std::endl;//FIX ME: Use log
+                syslog(LOG_PERROR, "Epoll: Unexpected event");
             }
         }
         timerManager->tick();
@@ -75,7 +75,7 @@ void HttpServer::acceptConnection(){
         int acceptFd = accept4(listenfd, NULL, NULL, SOCK_NONBLOCK | SOCK_CLOEXEC);
         if(acceptFd == -1){
             if(errno!=EAGAIN)
-                std::cout << "socket accept: "<< strerror(errno) << std::endl; // FIX ME: use log
+                syslog(LOG_PERROR, strerror(errno));//std::cout << "socket accept: "<< strerror(errno) << std::endl;
             break;
         }
           int enable = 1;
@@ -119,7 +119,7 @@ void HttpServer::doRequest(HttpContext* context){
         response->appendToBuffer(context->getOutput());
     }else if(context->parseFinsh()){
         response->setFilePath(srcDir, context->getRequest()->getPath());
-        response->makeResponse(HttpResponse::Code200_Ok, false);
+        response->makeResponse(HttpResponse::Code200_Ok, context->keepAlive());
         response->appendToBuffer(context->getOutput());
     }
 
@@ -136,7 +136,7 @@ void HttpServer::doResponse(HttpContext* context){
     HttpResponse* response = context->getResponse();
     //context->clearTimer();//timerManager->delTimer(context); 
 
-    int writeErrno;
+    int writeErrno = 0;
     int ret = context->writev(&writeErrno);
 
     if(context->getOutput()->writeAllFile()){
@@ -148,15 +148,9 @@ void HttpServer::doResponse(HttpContext* context){
             return;
         }
     }
-    else {
-    //else if(ret<0)
-        // if(writeErrno==EAGAIN){
-        //     epoller->modFd(fd, context, (EPOLLOUT | EPOLLONESHOT));
-        //     return;
-        // }
-        //timerManager->addTimer(context, timeout, std::bind(&HttpServer::closeConnection, this, context));
+    else if(ret > 0 || writeErrno==EAGAIN){
         epoller->modFd(fd, context, (EPOLLOUT | EPOLLONESHOT));
-        return;
+        return;        
     }
     closeConnection(context);
 }
