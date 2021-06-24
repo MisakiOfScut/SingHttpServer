@@ -75,10 +75,10 @@ void HttpServer::acceptConnection(){
         int acceptFd = accept4(listenfd, NULL, NULL, SOCK_NONBLOCK | SOCK_CLOEXEC);
         if(acceptFd == -1){
             if(errno!=EAGAIN)
-                syslog(LOG_PERROR, strerror(errno));//std::cout << "socket accept: "<< strerror(errno) << std::endl;
+                syslog(LOG_PERROR, "%s", strerror(errno));//std::cout << "socket accept: "<< strerror(errno) << std::endl;
             break;
         }
-          int enable = 1;
+        int enable = 1;
         setsockopt(acceptFd, IPPROTO_TCP, TCP_NODELAY, (void *)&enable, sizeof(enable));
         HttpContext* context = new HttpContext(acceptFd);
         timerManager->addTimer(context, timeout, std::bind(&HttpServer::closeConnection, this, context));
@@ -106,7 +106,7 @@ void HttpServer::doRequest(HttpContext* context){
         return;
     }
     else if(ret<0 && readErrno == EAGAIN){//read would block
-        epoller->modFd(context->getFd(), context, (EPOLLIN | EPOLLONESHOT));//reset fd for next readable event
+        //epoller->modFd(context->getFd(), context, (EPOLLIN | EPOLLONESHOT));//reset fd for next readable event
         //timerManager->addTimer(context, timeout, std::bind(&HttpServer::closeConnection, this, context));//reset timer
         //--------采取先del定时器，EAGAIN再添加回去的策略，如果能一次读完的情况多则效率高，否则堆的频繁变动反而效率低------//
         //timerManager->updTimer(context, timeout);
@@ -119,14 +119,15 @@ void HttpServer::doRequest(HttpContext* context){
         response->appendToBuffer(context->getOutput());
     }else if(context->parseFinsh()){
         response->setFilePath(srcDir, context->getRequest()->getPath());
-        response->makeResponse(HttpResponse::Code200_Ok, context->keepAlive());
+        response->makeResponse(HttpResponse::Code200_Ok, !context->keepAlive());
         response->appendToBuffer(context->getOutput());
     }
 
     if(response->getFileSize()>0 && response->getFile()){
         context->getOutput()->setWriteFile(response->getFile(), response->getFileSize());
     }
-    epoller->modFd(context->getFd(), context, (EPOLLOUT | EPOLLONESHOT));
+    //epoller->modFd(context->getFd(), context, (EPOLLOUT | EPOLLONESHOT));
+    doResponse(context);
 }
 
 //send response
@@ -137,7 +138,8 @@ void HttpServer::doResponse(HttpContext* context){
     //context->clearTimer();//timerManager->delTimer(context); 
 
     int writeErrno = 0;
-    int ret = context->writev(&writeErrno);
+    int ret = 0;
+    while( (ret = context->writev(&writeErrno)) > 0 );
 
     if(context->getOutput()->writeAllFile()){
         if(context->keepAlive()){
@@ -148,8 +150,8 @@ void HttpServer::doResponse(HttpContext* context){
             return;
         }
     }
-    else if(ret > 0 || writeErrno==EAGAIN){
-        epoller->modFd(fd, context, (EPOLLOUT | EPOLLONESHOT));
+    else if(writeErrno==EAGAIN){
+        //epoller->modFd(fd, context, (EPOLLOUT | EPOLLONESHOT));
         return;        
     }
     closeConnection(context);

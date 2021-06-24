@@ -109,6 +109,3 @@ void HttpContext::reset(){
     response.reset();
 }
 
-int HttpContext::writev(int* savedErrno){
-    return output.writeFd(fd, savedErrno);
-}

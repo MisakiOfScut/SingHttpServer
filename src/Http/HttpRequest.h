@@ -93,8 +93,9 @@ public:
 
     bool keepAlive() const{
         std::string connection = getHeaders("Connection");
-        bool res = connection == "Keep-Alive" || 
-                (version == HTTP11 && connection != "close");
+        bool res = (connection == "Keep-Alive" || connection == "keep-alive") 
+            || (version == HTTP11 && connection != "close") 
+            || (!getHeaders("Keep-Alive").empty());
 
         return res;
     }
